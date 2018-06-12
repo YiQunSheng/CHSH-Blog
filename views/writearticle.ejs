@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Material Design Lite</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="images/android-desktop.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
+
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <!--<meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">-->
+    <!--<meta name="msapplication-TileColor" content="#3372DF">-->
+
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-pink.min.css">
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://cdn.bootcss.com/marked/0.4.0/marked.js"></script>
+    <style>
+        #view-source {
+            position: fixed;
+            display: block;
+            right: 0;
+            bottom: 0;
+            margin-right: 40px;
+            margin-bottom: 40px;
+            z-index: 900;
+        }
+        #titleInput{
+            width: 100%;
+            height: 40px;
+        }
+        #md,#html{
+            height: 500px;
+            width: 100%;
+            border:  white;
+        }
+        #md{
+            resize: none;
+            font-size: 16px;
+            font-family: "Helvetica", "Arial", sans-serif;
+        }
+        #html{
+            overflow-x: auto;
+            overflow-y: auto;
+            padding-right: 8px;
+        }
+    </style>
+</head>
+<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <!--导航栏-->
+    <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+
+        </div>
+        <div class="mdl-layout mdl-layout__header-row">
+            <h3>CHSH的博客</h3>
+        </div>
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+        </div>
+        <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
+            <a href="/newindex" class="mdl-layout__tab">主页</a>
+            <a href="/article/articlePage" class="mdl-layout__tab">文章列表</a>
+            <a href="#features" class="mdl-layout__tab">最近访客</a>
+            <a href="#features" class="mdl-layout__tab">推荐</a>
+            <a href="/article/writeArticle" class="mdl-layout__tab is-active">发布文章</a>
+            <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="add">
+                <i class="material-icons" role="presentation">star</i>
+                <span class="visuallyhidden">Add</span>
+            </button>
+
+        </div>
+
+    </header>
+    <main class="mdl-layout__content">
+        <!--正文部分-->
+        <main class="mdl-layout-content">
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--12-col testcol">
+                    <!--<input type="text" id="titleInput" placeholder="请输入博客标题"/>-->
+                    <!-- Textfield with Floating Label -->
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="titleInput">
+                        <label class="mdl-textfield__label" for="titleInput">请输入博客标题</label>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--6-col testcol mdl-card mdl-shadow--2dp">
+                    <textarea id="md" class="form-control "  placeholder="博客支持MarkDown"></textarea>
+                </div>
+                <div class="mdl-cell mdl-cell--6-col testcol mdl-card mdl-shadow--2dp" >
+                    <div id="html"></div>
+                    </div>
+            </div>
+        </main>
+        <!--页脚部分-->
+        <footer class="mdl-mega-footer">
+            <div class="mdl-mega-footer--middle-section">
+                <div class="mdl-mega-footer--drop-down-section">
+                    <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+                    <h1 class="mdl-mega-footer--heading">Features</h1>
+                    <ul class="mdl-mega-footer--link-list">
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Terms</a></li>
+                        <li><a href="#">Partners</a></li>
+                        <li><a href="#">Updates</a></li>
+                    </ul>
+                </div>
+                <div class="mdl-mega-footer--drop-down-section">
+                    <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+                    <h1 class="mdl-mega-footer--heading">Details</h1>
+                    <ul class="mdl-mega-footer--link-list">
+                        <li><a href="#">Spec</a></li>
+                        <li><a href="#">Tools</a></li>
+                        <li><a href="#">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="mdl-mega-footer--drop-down-section">
+                    <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+                    <h1 class="mdl-mega-footer--heading">Technology</h1>
+                    <ul class="mdl-mega-footer--link-list">
+                        <li><a href="#">How it works</a></li>
+                        <li><a href="#">Patterns</a></li>
+                        <li><a href="#">Usage</a></li>
+                        <li><a href="#">Products</a></li>
+                        <li><a href="#">Contracts</a></li>
+                    </ul>
+                </div>
+                <div class="mdl-mega-footer--drop-down-section">
+                    <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+                    <h1 class="mdl-mega-footer--heading">FAQ</h1>
+                    <ul class="mdl-mega-footer--link-list">
+                        <li><a href="#">Questions</a></li>
+                        <li><a href="#">Answers</a></li>
+                        <li><a href="#">Contact us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mdl-mega-footer--bottom-section">
+                <div class="mdl-logo">
+                    More Information
+                </div>
+                <ul class="mdl-mega-footer--link-list">
+                    <li><a href="https://developers.google.com/web/starter-kit/">Web Starter Kit</a></li>
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Privacy and Terms</a></li>
+                </ul>
+            </div>
+        </footer>
+    </main>
+</div>
+<ul class="mdl-menu  mdl-menu--top-left mdl-js-menu mdl-js-ripple-effect" for="view-source">
+    <li class="mdl-menu__item">个人信息</li>
+    <li class="mdl-menu__item">登出</li>
+    <li class="mdl-menu__item" id="submitMD">发布文章</li>
+    <li class="mdl-menu__item" id="ToTop">返回顶部</li>
+</ul>
+<a href="#"  id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">View Source</a>
+<!--<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>-->
+</body>
+<script src="/js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="/js/material.js"></script>
+<script type="text/javascript" src="/js/jquery.toTop.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#ToTop").click(function () {
+            $('html, body').animate({scrollTop: 0}, 500);
+        })
+    })
+</script>
+<script>
+    Date.prototype.format = function (format) {
+        var args = {
+            "M+": this.getMonth() + 1,
+            "d+": this.getDate(),
+            "h+": this.getHours(),
+            "m+": this.getMinutes(),
+            "s+": this.getSeconds(),
+            "q+": Math.floor((this.getMonth() + 3) / 3),  //quarter
+            "S": this.getMilliseconds()
+        };
+        if (/(y+)/.test(format))
+            format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+        for (var i in args) {
+            var n = args[i];
+            if (new RegExp("(" + i + ")").test(format))
+                format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? n : ("00" + n).substr(("" + n).length));
+        }
+        return format;
+    };
+</script>
+<script>
+    $(document).ready(function(){
+        var htmlStr = '';
+        $("#md").on("keyup blur",function () {
+            $('#html').html(marked($("#md").val()));
+            //将markdown格式转化成html
+            htmlStr=marked(marked($("#md").val()));
+            // console.log(htmlStr.toString());
+        })
+        $("#submitMD").click(function(){
+            console.log(htmlStr);
+            var datetime = new Date().format("yyyy-MM-dd hh:mm:ss");
+            var articleTitle = $("#titleInput").val();
+            console.log()
+            console.log(articleTitle);
+            $.ajax({
+                data:{
+                    title:articleTitle,
+                    author:'cxy',
+                    content:htmlStr,
+                    writeDate:datetime,
+                },
+                type:"POST",
+                url:"/article/submitArticle",
+                success:function(msg){
+                    alert("Submit success");
+                    window.location.href='/'
+                },
+                error:function(){
+                    alert("Error");
+                }
+            })
+        })
+    })
+</script>
+</html>

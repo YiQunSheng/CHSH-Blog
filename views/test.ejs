@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>EJS Examples</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+    <script type="text/javascript" src="ejs.min.js"></script>
+    <script >
+        var data={flag:false,
+            data1:["====1","====2","====3"],
+            data2:["====4","====5","====6"]
+        };
+
+        window.onload=function(){
+            var tem=document.getElementById("tem").innerHTML;
+            var html=ejs.render(tem,data);
+            document.getElementsByTagName("body")[0].innerHTML=html;
+        }
+    </script>
+</head>
+<body>
+<script type="text/javascript" id="tem">
+    <ul>
+    <%if(flag){%>
+    <%for (var i=0;i<data1.length;i++){%>
+    <li><%=data1[i]%></li>
+    <%}%>
+    <%}else{%>
+    <%for(var i=0;i<data2.length;i++){%>
+    <li><%=data2[i]%></li>
+    <%}%>
+    <%}%>
+    </ul>
+</script>
+</body>
+</html>
