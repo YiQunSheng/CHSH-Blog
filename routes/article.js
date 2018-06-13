@@ -25,9 +25,17 @@ router.get('/articlePage', function (req, res) {
 
     });
 });
-router.get('/articleDetail',function (req,res) {
-    res.render('articledetail.ejs',null);
-})
+router.get('/articleDetail/:articleId',function (req,res) {
+    var articleId=req.params.articleId;
+    client.query(articleSQL.queryByArticleId,[articleId],function(err,result){
+        if(err){
+            throw err;
+        }
+        console.log(result[0].articleTitle);
+        res.render('articledetail.ejs',{articleDetail:result[0]});
+    })
+
+});
 // 提交文章
 router.post('/submitArticle', function (req, res) {
     console.log(req.body);

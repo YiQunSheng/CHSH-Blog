@@ -75,22 +75,10 @@
             <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
             <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col articleArea">
                 <div class="demo-crumbs mdl-color-text--grey-500">
-                    CHSH &gt; 文章列表 &gt; RXJS 66-70 翻译
+                    CHSH &gt; 文章列表 &gt; <%=articleDetail.articleTitle%>
                 </div>
-                <h1 id="rxjs-66-70-">RXJS 66-70 翻译</h1>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对于更早的网页应用来说（Web1.0时代），内存释放并不是一个很大的问题，因为页面相互切换时，会强制让页面重新装载，这样就会清空Javascript运行时所占用的空间。而在今天，随着单页应用日益风行（在Web
-                    2.0+ 的时代），用户也变得更加现代化，也更加富有，内存的压力成为了一个真正的威胁；对象现在可以在加载到浏览器中的整个应用程序的生命周期内存在。所有这些并不意味着危言耸听。
-                    我们预想（就像JavaScript自创立以来）垃圾收集器将继续改进，许多应用程序将毫无问题地运行。 但适当的内存管理对于所有应用程序来说仍然是一件好事。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这就是为什么我们需要像RxJS这样复杂的库。
-                    在RxJS中，制作者是负责取消订阅的人员。 管理订阅是通过对subscribe（）的调用返回的Subscription类型的对象（也称为RxJS
-                    4中的Disposable）来处理的，该对象实现了处理源“流”的机制。 如果我们已经完成了可观察的事物并且不再希望从事件中接收事件，我们可以调用unsubscribe（）来取消它;
-                    这被称为明确的取消。 这是一个简短的例子：</p>
-                <pre>
-                    <code> const mouseClicks = Rx.Observable.fromEvent(document, &#39;mouseup&#39;);
-                    const subscription = mouseClicks.subscribe(someMouseClickObserver);
-                    ... moments later
-                        unsubscribe();
-//拆除流并且释放掉所有分配了资源的对象</code></pre>
-
+                <h1 id="rxjs-66-70-"><%=articleDetail.articleTitle%></h1>
+                <%-articleDetail.articleContent%>
             </div>
         </div>
         <!--评论部分-->
