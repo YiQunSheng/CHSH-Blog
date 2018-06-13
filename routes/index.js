@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
 //   res.render('reg', { title: 'Register' });
 // });
 router.get('/newindex', function (req, res) {
-  res.render('mdindex.ejs')
+  res.render('index.ejs')
 });
 router.get('/login', function (req, res) {
     res.render('login.ejs');
