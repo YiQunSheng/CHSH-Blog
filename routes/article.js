@@ -55,7 +55,7 @@ router.get('/articleDetail/:articleId',function (req,res) {
                         });
                     });
                     setTimeout(function(){
-                        console.log(newResults[0].length);
+                        // console.log(newResults[0].length);
                         callback(null, results,newResults);
                     },500);
                 }
