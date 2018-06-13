@@ -50,12 +50,12 @@ router.get('/articleDetail/:articleId',function (req,res) {
                             newResults[index] = new Array();
                             results2.forEach(function (item2, index2) {
                                 newResults[index][index2] = results2[index2];
-                                console.log(newResults[index][index2].replyContent);
+                                // console.log(newResults[index][index2].replyContent);
                             });
                         });
                     });
                     setTimeout(function(){
-                        console.log(newResults[0].length);
+                        // console.log(newResults[0].length);
                         callback(null, results,newResults);
                     },500);
                 }
