@@ -47,8 +47,10 @@
 <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <!-- 导航栏开始 -->
-    <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
+    <header class="mdl-layout__header mdl-layout__header--waterfall mdl-color--primary">
+        <!--为了header大一点设置的header-row-->
         <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+
         </div>
         <div class="mdl-layout mdl-layout__header-row">
             <h3>CHSH的博客</h3>
@@ -60,14 +62,10 @@
             <a href="/article/articlePage" class="mdl-layout__tab is-active">文章列表</a>
             <a href="#features" class="mdl-layout__tab">最近访客</a>
             <a href="#features" class="mdl-layout__tab">推荐</a>
-            <a href="#features" class="mdl-layout__tab">发布文章</a>
-            <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent"
-                    id="add">
-                <i class="material-icons" role="presentation">add</i>
-                <span class="visuallyhidden">Add</span>
-            </button>
+            <a href="/article/writeArticle" class="mdl-layout__tab">发布文章</a>
         </div>
     </header>
+
     <!-- 导航栏结束 -->
     <main class="mdl-layout__content">
         <div class="mdl-grid">
