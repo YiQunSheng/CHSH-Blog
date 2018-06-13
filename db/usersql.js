@@ -4,6 +4,6 @@ var UserSQL = {
     queryAll:'SELECT * FROM user',  
     getUserByOpenid:'SELECT * FROM user WHERE userId = ? ', 
     getUserByInfo:'SELECT * FROM user WHERE username = ? AND password = ? ',
-    deleteUserByInfo:'DELETE FROM user WHERE username = ? AND password = ? ',
+    deleteUserByInfo:'DELETE FROM user WHERE username = ? AND password = ? '
 };
 module.exports = UserSQL;
