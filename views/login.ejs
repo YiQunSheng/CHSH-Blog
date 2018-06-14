@@ -120,6 +120,7 @@
 </div>
 <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 <script src="/js/jquery-3.3.1.js"></script>
+<script src="/js/jquerysession.js"></script>
 <script>
     $(document).ready(function () {
         $("#signin").click(function () {
@@ -137,6 +138,7 @@
                     if(msg==="Wrong Password"||msg==="user not found")
                     alert(msg);
                     else{
+                        $.session.set('user',msg);
                         window.location.href = "/";
                     }
 
