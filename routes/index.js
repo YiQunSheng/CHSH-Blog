@@ -20,7 +20,7 @@ router.get('/login', function (req, res) {
     res.render('login.ejs');
 });
 router.get('/movies', function (req, res) {
-    res.render('login.ejs');
+    res.render('movies.ejs');
 });
 router.get('/reg', function(req, res, next) {
     res.render('register.ejs', { title: 'Express' });
