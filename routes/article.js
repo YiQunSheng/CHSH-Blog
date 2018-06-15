@@ -29,6 +29,26 @@ router.get('/articlePage', function (req, res) {
 
     });
 });
+router.get("/getAll",function (req,res) {
+    if(req.method=="POST"){
+        var param=req.body;
+    }else{
+        var param=req.query ||req.params;
+    }
+    console.log(param);
+    var pageSize=parseInt(param.size);
+    var pageNo=(parseInt(param.page)-1)*pageSize+1;
+    client.query(articleSQL.queryAllLimit,[pageNo,pageSize],function (err,result) {
+        if(err)
+            throw err;
+        else{
+            //设置跨域访问
+            res.set("Access-Control-Allow-Origin","*");
+            res.json(result);
+        }
+    })
+
+})
 router.get('/articleDetail/:articleId',function (req,res) {
     var articleId=req.params.articleId;
     client.query(articleSQL.queryByArticleId,[articleId],function(err,result){
