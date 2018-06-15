@@ -33,6 +33,73 @@
         .recommeng-card > .mdl-card__menu {
             color: #fff;
         }
+        .demo-list-icon {
+            width: 300px;
+        }
+        .contact_facebook{
+            font-size: 14px;
+            color: #fff;
+            margin-right: 1em;
+            text-transform: uppercase;
+            display:inline-block;
+            background:#337ab7;
+            padding:1.2em 1em;
+            margin-bottom:0.5em;
+            list-style: none;
+            cursor: pointer;
+            -webkit-transition: all 0.2s ease;
+            -moz-transition: all 0.2s ease;
+            -o-transition: all 0.2s ease;
+            -ms-transition: all 0.2s ease;
+            transition: all 0.2s ease;
+        }
+        .contact_facebook:hover{
+            background:#29689E;
+        }
+        .contact_weibo{
+            font-size: 14px;
+            color: #fff;
+            margin-right: 1em;
+            text-transform: uppercase;
+            display:inline-block;
+            background:#dd4b39;
+            padding:1.2em 1em;
+            margin-bottom:0.5em;
+            list-style: none;
+            cursor: pointer;
+            -webkit-transition: all 0.2s ease;
+            -moz-transition: all 0.2s ease;
+            -o-transition: all 0.2s ease;
+            -ms-transition: all 0.2s ease;
+            transition: all 0.2s ease;
+        }
+        .contact_weibo:hover{
+            background:#DC3E2A;
+        }
+        .contact_wechat{
+            font-size: 14px;
+            color: #fff;
+            margin-right: 1em;
+            text-transform: uppercase;
+            display:inline-block;
+            background:#ea4c89;
+            padding:1.2em 1em;
+            margin-bottom:0.5em;
+            list-style: none;
+            cursor: pointer;
+            -webkit-transition: all 0.2s ease;
+            -moz-transition: all 0.2s ease;
+            -o-transition: all 0.2s ease;
+            -ms-transition: all 0.2s ease;
+            transition: all 0.2s ease;
+        }
+        .contact_wechat:hover{
+            background: #E03979;
+        }
+        a{
+            text-decoration: none;
+            color: #fff;
+        }
     </style>
 </head>
 <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
@@ -49,7 +116,7 @@
         <div class="mdl-layout--large-screen-only mdl-layout__header-row">
         </div>
         <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
-            <a href="/newindex" class="mdl-layout__tab is-active">主页</a>
+            <a href="/" class="mdl-layout__tab is-active">主页</a>
             <a href="/article/articlePage" class="mdl-layout__tab">文章列表</a>
             <a href="#features" class="mdl-layout__tab">最近访客</a>
             <a href="#features" class="mdl-layout__tab">推荐</a>
@@ -103,7 +170,7 @@
                             </div>
                         </div>
                         <div class="mdl-card__actions">
-                            <a href="#" class="mdl-button">Read our features</a>
+                            <a href="/article/articlePage" class="mdl-button">探索更多...</a>
                         </div>
                     </div>
                 </section>
@@ -123,18 +190,38 @@
 
                 </section>
             </div>
-            <div class="mdl-cell mdl-cell--3-col">
+            <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-phone">
                 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-cell--12-col mdl-shadow--2dp">
-                    <div class="mdl-card mdl-cell mdl-cell--12-col">
-                        <div class="mdl-card__supporting-text">
-                            <h4>标题1</h4>
-                            作者：盛轶群 | 2018-6-10
+                    <div class="demo-card-event mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title mdl-card--expand">
+                            <ul class="demo-list-icon mdl-list">
+                                <li class="mdl-list__item">
+    <span class="mdl-list__item-primary-content contact_facebook">
+    Facebook
+</span>
+                                </li>
+                                <li class="mdl-list__item">
+    <span class="mdl-list__item-primary-content contact_weibo">
+<a target="_blank" href="https://weibo.com/u/5812600256?refer_flag=1005050010_">WeiBo</a>
+
+  </span>
+                                </li>
+                                <li class="mdl-list__item">
+    <span class="mdl-list__item-primary-content contact_wechat">
+
+    WeChat
+  </span>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="mdl-card__actions">
-                            <a href="#" class="mdl-button">阅读全文</a>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                Contact us
+                            </a>
+                            <div class="mdl-layout-spacer"></div>
+
                         </div>
                     </div>
-                    <!-- 菜单 -->
                 </section>
             </div>
             <!--下方两个圆圈-->
@@ -170,10 +257,12 @@
 <!--浮动按钮-->
 <ul class="mdl-menu  mdl-menu--top-right mdl-js-menu mdl-js-ripple-effect" for="more-fab" style="margin-bottom: 10px;">
     <li class="mdl-menu__item">个人信息</li>
+    <li class="mdl-menu__item">???</li>
+    <a class="mdl-menu__item" href="/users/loginPage" style="color: black">登录</a>
     <li class="mdl-menu__item">登出</li>
     <li class="mdl-menu__item" id="ToTop">返回顶部</li>
 </ul>
-<a href="#"  id="more-fab" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast"><i class="material-icons">add</i></a>
+<a id="more-fab" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast"><i class="material-icons">person</i></a>
 <!--<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>-->
 </body>
 <script src="/js/jquery-3.3.1.js"></script>

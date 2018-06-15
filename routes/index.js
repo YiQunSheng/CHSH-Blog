@@ -14,10 +14,13 @@ router.get('/', function(req, res, next) {
 //   res.render('reg', { title: 'Register' });
 // });
 router.get('/newindex', function (req, res) {
-  res.render('mdindex.ejs')
+  res.render('index.ejs')
 });
 router.get('/login', function (req, res) {
     res.render('login.ejs');
+});
+router.get('/movies', function (req, res) {
+    res.render('movies.ejs');
 });
 router.get('/reg', function(req, res, next) {
     res.render('register.ejs', { title: 'Express' });

@@ -236,7 +236,7 @@
         };
 
           var articleId=parseInt(<%=articleDetail.articleId%>);
-               $.session.set('author','cxy');
+               $.session.set('author',$.session.get('user'));
         $(".moreBtn").click(function (){
             $(this).parent().parent().next(".replyContent").slideToggle(800);
             // $("#comment1").slideToggle(800);
