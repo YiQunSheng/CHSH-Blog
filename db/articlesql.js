@@ -4,6 +4,7 @@ var ArticleSQL = {
     queryAll:'SELECT * FROM article order by articleId desc',
     queryFour:"SELECT * from article order by articleWriteDate desc limit 0,4",
     queryPage:'SELECT * from article limit ?,?',
-    queryByArticleId:'SELECT * FROM article WHERE articleId=?'
+    queryByArticleId:'SELECT * FROM article WHERE articleId=?',
+    queryAllLimit:'SELECT * FROM  article limit ?,?'
 };
 module.exports = ArticleSQL;
