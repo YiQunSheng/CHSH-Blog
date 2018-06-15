@@ -68,6 +68,9 @@
                 width: 1170px
             }
         }
+        h3{
+            line-height: 10px;
+        }
 
 
     </style>
@@ -259,6 +262,7 @@
                          var arrLen=passages.length;
                          if(arrLen>0){
                              for(var i=0;i<arrLen;i++){
+
                                  result+='<section class="section--center mdl-grid mdl-grid--no-spacing mdl-cell--12-col mdl-shadow--2dp opacity">'+
                                     '<div class="mdl-card mdl-cell mdl-cell--12-col">'+
                                      '<div class="mdl-card__supporting-text">'+
@@ -268,8 +272,7 @@
                                  '<div class="mdl-card__actions">'+
                                     ' <a href="/article/articleDetail/'+passages[i].articleId+'" class="mdl-button">阅读全文</a>'+
                                      '</div>'+
-                                     '</div>'+
-                                     '</section>'
+                                     '</div>'+ '</section>'
                              }
                          }
                          // 如果没有数据
