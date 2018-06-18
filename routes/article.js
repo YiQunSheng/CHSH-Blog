@@ -188,27 +188,5 @@ router.get('/articleResult',function(req,res){
              res.json(result);
         }
     })
-
 });
-=======
-})
-router.get('/movies',function (req,res){
-    $.ajax({
-        dataType: 'jsonp',
-        type:'GET',
-        url:'https://api.douban.com/v2/movie/top250?start=20&count=20',
-        success:function (msg) {
-            document.write('您这次获取了'+msg.count+'部电影， 序号是'+msg.start+ '到 '+msg.start+msg.count );
-            console.log(msg)
-            msg.subjects.forEach(function (item) {
-                console.log(item.title+"   ");
-                console.log("img small is  "+item.images.small);
-            })
-        },
-        error:function (msg) {
-            alert(msg);
-        }
-    })
-})
->>>>>>> syq
 module.exports = router;
