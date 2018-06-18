@@ -93,7 +93,7 @@
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell cdl-cell--12-col" style="width: 90%;margin: 10px">
                                 <input class="mdl-textfield__input" pattern="[A-Z,a-z,0-9]{4,8}$" type="text" id="userid">
                                 <label class="mdl-textfield__label" for="Name">UserID</label>
-                                <span class="mdl-textfield__error">Letters and numbers only,5-8 long</span>
+                                <span class="mdl-textfield__error">Letters and numbers only,4-8 long</span>
                             </div>
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell cdl-cell--12-col" style="width: 90%;margin: 10px">
                                 <input class="mdl-textfield__input" pattern="[A-Z,a-z,0-9]{3,20}$" type="text" id="userName">
@@ -138,6 +138,22 @@
                 alert("Password not equal!");
                 return;
             }
+            if(pwd===""||userid===""||userName===""||pwdConfirm===""){
+                alert("Cannot be empty!");
+                return;
+            }
+            else if(userid.length>8||userid.length<4){
+                alert("USERID Input ERROR!");
+                return;
+            }
+            else if(userName.length>8||userName.length<4){
+                alert("USENAME Input ERROR!");
+                return;
+            }
+            else if(pwd.length>16||pwd.length<4){
+                alert("Pwd Input ERROR!");
+                return;
+            }
             var data = {
                 userid:userid,
                 pwd:pwd,
@@ -151,7 +167,7 @@
                     if(msg==="That id has already been registered")
                         alert(msg);
                     else{
-                        alert("Login Success");
+                        alert("Register Success");
                         window.location.href = "/users/loginPage";
                     }
 
