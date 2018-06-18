@@ -55,6 +55,15 @@
             height: auto;
             padding: 0;
         }
+        #more-fab {
+            position: fixed;
+            display: block;
+            right: 0;
+            bottom: 0;
+            margin-right: 40px;
+            margin-bottom: 40px;
+            z-index: 900;
+        }
     </style>
 </head>
 
@@ -76,7 +85,7 @@
             <a href="/article/articlePage" class="mdl-layout__tab">文章列表</a>
             <a href="#features" class="mdl-layout__tab">最近访客</a>
             <a href="/page" class="mdl-layout__tab is-active">推荐</a>
-            <a href="/article/writeArticle" class="mdl-layout__tab">发布文章</a>
+            <a href="/article/writeArticle" class="mdl-layout__tab" id="submitArticle">发布文章</a>
         </div>
     </header>
     <main class="mdl-layout__content">
@@ -91,25 +100,22 @@
         <!--页脚部分-->
         <footer class="mdl-mini-footer">
             <div class="mdl-mini-footer__left-section">
-                <div class="mdl-logo">Title</div>
+                <div class="mdl-logo">CHSH'sBlog</div>
                 <ul class="mdl-mini-footer__link-list">
-                    <li><a href="#">Help</a></li>
-                    <li><a href="#">Privacy & Terms</a></li>
+                    <li><a href="www.getmdl.io/">We Use Google Material Degisn Lite</a></li>
+                    <li><a href="#">ZUCC-CHSH Group</a></li>
                 </ul>
             </div>
         </footer>
     </main>
 </div>
-
-
-<!--<div class="mdl-grid mdl-grid&#45;&#45;no-spacing mdl-cell&#45;&#45;3-col mdl-cell&#45;&#45;2-tablet movieContent">-->
-    <!--<section class="demo-card-image mdl-card mdl-shadow&#45;&#45;2dp  mdl-shadow&#45;&#45;2dp">-->
-        <!--<img class="mdl-card__title mdl-card&#45;&#45;expand" src="\' https://img3.doubanio.com/view/photo/s_ratio_poster/public/p462657443.jpg\'">-->
-      <!--<div class="mdl-card__actions">-->
-       <!--<span class="demo-card-image__filename">{{movie.title}}</span>-->
-      <!--</div>-->
-    <!--</section>-->
-<!--</div>-->
+<ul class="mdl-menu  mdl-menu--top-right mdl-js-menu mdl-js-ripple-effect" for="more-fab" style="margin-bottom: 10px;">
+    <!--<li class="mdl-menu__item">个人信息</li>-->
+    <a class="mdl-menu__item" href="/users/loginPage" id="login-item" style="color: black">登录</a>
+    <a class="mdl-menu__item" href="/users/logout" id="logout" style="color: black">登出</a>
+    <!--<li class="mdl-menu__item" id="ToTop">返回顶部</li>-->
+</ul>
+<a id="more-fab" class="mdl-button mdl-js-button  mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">未登陆</a>
 </body>
 <script src="/js/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="/js/material.js"></script>
@@ -163,6 +169,27 @@
 
             }
         });
+    })
+</script>
+<script type="text/javascript" src="/js/jquerysession.js"></script>
+<script>
+    $(document).ready(function () {
+        if($.session.get('user')===undefined||$.session.get('role')==='visitor'){
+            $('#submitArticle').remove();
+            $("#more-fab").text("未登陆");
+        }
+        if($.session.get('user')!=undefined){
+            $("#more-fab").text('你好 '+$.session.get('user'));
+            $("#login-item").remove();
+        }
+        $("#ToTop").click(function () {
+            // $('html, body').animate({scrollTop: 0}, 500);
+            scrollTo(0,0)
+            // alert("click")
+        })
+        $("#logout").click(function () {
+            $.session.clear();
+        })
     })
 </script>
 </html>

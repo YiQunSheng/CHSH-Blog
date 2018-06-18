@@ -48,10 +48,15 @@ router.post('/reg',function(req,res,next){
         }
     })
 });
+router.get('/registerPage',function (req,res) {
+    res.render("register.ejs",null);
+})
 router.get('/loginPage',function (req,res) {
     res.render("login.ejs",null);
 })
-
+router.get('/logout',function (req,res) {
+    res.render("mdindex.ejs",null);
+})
 router.post('/login',function(req,res){
     var para =req.body;
     console.log(para);
@@ -75,4 +80,5 @@ router.post('/login',function(req,res){
         }
     })
 })
+
 module.exports = router;

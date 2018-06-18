@@ -32,5 +32,8 @@ res.render('testhtml', { title: 'Express' });
 router.get('/page',function(req,res){
     res.render('pageTest.ejs', null);
 })
+router.get('/mdl',function (req,res) {
+    res.redirect('http://www.getmdl.io')
+})
 //导出这个路由并在app.js中通过app.use('/', routes)加载
 module.exports = router;
