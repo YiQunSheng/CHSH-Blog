@@ -35,7 +35,7 @@ router.post('/reg',function(req,res,next){
         }
         else {
             if(results.length===0){
-                client.query(user.insert,[para.userid,para.username,para.password,'visitor'],function(err,result){
+                client.query(user.insert,[para.userid,para.userName,para.pwd,'visitor'],function(err,result){
                     if(err)
                         throw err;
                     else {
@@ -43,7 +43,7 @@ router.post('/reg',function(req,res,next){
                     }
                 })}
             else {
-                res.send("已被注册")
+                res.send("That id has already been registered")
             }
         }
     })
