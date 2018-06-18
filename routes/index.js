@@ -29,5 +29,8 @@ router.get('/reg', function(req, res, next) {
 router.get('/testhtml',function(req,res){
 res.render('testhtml', { title: 'Express' });
 })
+router.get('/page',function(req,res){
+    res.render('pageTest.ejs', null);
+})
 //导出这个路由并在app.js中通过app.use('/', routes)加载
 module.exports = router;
