@@ -242,42 +242,55 @@
             // $("#comment1").slideToggle(800);
         })
         $("#submitCommentButton").click(function(){
-            var currentTime=new  Date().format("yyyy-MM-dd hh:mm:ss");
-            var commentContent=$("#commentContent").val();
-            $.ajax({
-                data:{
-                    commentContent:commentContent,
-                    commentAuthor:$.session.get('author'),
-                    commentTime:currentTime,
-                    articleId:articleId
-                },
-                type:"POST",
-                url:"/article/addComment",
-                success:function (msg) {
-                    alert(msg);
-                    window.location.href = "http://127.0.0.1:3000/article/articleDetail/<%=articleDetail.articleId%>";
-                },
-                error:function () {
-                    alert("error");
-                }
-            })
+            if($.session.get('user')===undefined){
+                window.location.href='/users/loginPage';
+            }
+            else {
+                var currentTime = new Date().format("yyyy-MM-dd hh:mm:ss");
+                var commentContent = $("#commentContent").val();
+                $.ajax({
+                    data: {
+                        commentContent: commentContent,
+                        commentAuthor: $.session.get('author'),
+                        commentTime: currentTime,
+                        articleId: articleId
+                    },
+                    type: "POST",
+                    url: "/article/addComment",
+                    success: function (msg) {
+                        alert(msg);
+                        window.location.href = "http://127.0.0.1:3000/article/articleDetail/<%= articleDetail.articleId %>";
+                    },
+                    error: function () {
+                        alert("error");
+                    }
+                })
+            }
         })
         $(".replyCommentModal").click(function () {
-            //获得评论的Id
-            var commentId=$(this).parent().parent().children(".mdl-list__item-primary-content").children("#commentId").text();
-            var commentAuthor=$(this).parent().parent().children(".mdl-list__item-primary-content").children("#commentAuthor").text();
-            $.session.set("beRepliedAuthor", commentAuthor);
-            $.session.set("commentId",commentId);
-
+            if($.session.get('user')===undefined){
+                window.location.href='/users/loginPage';
+            }
+            else {
+                //获得评论的Id
+                var commentId = $(this).parent().parent().children(".mdl-list__item-primary-content").children("#commentId").text();
+                var commentAuthor = $(this).parent().parent().children(".mdl-list__item-primary-content").children("#commentAuthor").text();
+                $.session.set("beRepliedAuthor", commentAuthor);
+                $.session.set("commentId", commentId);
+            }
         })
         $(".replyReplyModal").click(function(){
-            //获得回复中评论的Id
-            var replyCommentId=$(this).parent().parent().children(".mdl-list__item-primary-content").children("#replyCommentId").text();
-            //获得被回复的作者名字
-            var replyAuthor=$(this).parent().parent().children(".mdl-list__item-primary-content").children("#replyAuthor").text();
-            $.session.set("beRepliedAuthor", replyAuthor);
-            $.session.set("commentId",replyCommentId);
-
+            if($.session.get('user')===undefined){
+                window.location.href='/users/loginPage';
+            }
+            else {
+                //获得回复中评论的Id
+                var replyCommentId = $(this).parent().parent().children(".mdl-list__item-primary-content").children("#replyCommentId").text();
+                //获得被回复的作者名字
+                var replyAuthor = $(this).parent().parent().children(".mdl-list__item-primary-content").children("#replyAuthor").text();
+                $.session.set("beRepliedAuthor", replyAuthor);
+                $.session.set("commentId", replyCommentId);
+            }
         })
         $(".submitReply").click(function () {
             var currentTime=new  Date().format("yyyy-MM-dd hh:mm:ss");

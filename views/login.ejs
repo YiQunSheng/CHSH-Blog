@@ -135,10 +135,12 @@
                 type:"POST",
                 url:"/users/login",
                 success:function (msg) {
-                    if(msg==="Wrong Password"||msg==="user not found")
-                    alert(msg);
+                    if(msg==="Wrong Password"||msg==="user not found"){
+                        alert(msg);
+                    }
                     else{
-                        $.session.set('user',msg);
+                        $.session.set('user',msg.userName);
+                        $.session.set('role',msg.role);
                         window.location.href = "/";
                     }
 

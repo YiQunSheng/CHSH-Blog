@@ -123,7 +123,7 @@
             <a href="/article/articlePage" class="mdl-layout__tab">文章列表</a>
             <a href="#features" class="mdl-layout__tab">最近访客</a>
             <a href="/page" class="mdl-layout__tab">推荐</a>
-            <a href="/article/writeArticle" class="mdl-layout__tab">发布文章</a>
+            <a href="/article/writeArticle" id="submitArticle" class="mdl-layout__tab">发布文章</a>
         </div>
     </header>
     <main class="mdl-layout__content">
@@ -271,8 +271,13 @@
 <script src="/js/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="/js/material.js"></script>
 <script type="text/javascript" src="/js/jquery.toTop.js"></script>
+<script type="text/javascript" src="/js/jquerysession.js"></script>
 <script>
     $(document).ready(function () {
+     
+        if($.session.get('user')===undefined||$.session.get('role')==='visitor'){
+            $('#submitArticle').remove();
+        }
         $("#ToTop").click(function () {
             $('html, body').animate({scrollTop: 0}, 500);
         })

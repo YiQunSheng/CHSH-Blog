@@ -28,34 +28,6 @@ router.get('/getall',function(req,res) {
 })
 
 router.post('/reg',function(req,res,next){
-    /*if(req.method==="POST"){
-        var param=req.body;
-    }else{
-        var param=req.query ||req.params;
-    }
-    client.query(user.getUserByOpenid,[param.userid],function(err,results){
-        if(err){
-            throw err;
-        }else{
-            if(results.length===0){
-                client.query(user.insert,[param.userid,param.username,param.password],function(err,result){
-                    if(err){
-                        throw err;
-                    }
-                    else{
-//    				   res.end(JSON.stringify({status:'100',msg:'注册成功!'}));
-                        res.send("注册成功！");
-                    }
-                });
-            }
-            else{ // 数据库存在就注册失败
-//                  res.end(JSON.stringify({status:'101',msg:'该用户名已经被注册'}));
-                res.send("该用户名已经被注册 ");
-            }
-        }
-
-    });*/
-    // console.log(req.body);
     var para = req.body;
     client.query(user.getUserByOpenid,[para.userid],function(err,results){
         if(err){
@@ -71,7 +43,7 @@ router.post('/reg',function(req,res,next){
                     }
                 })}
             else {
-                res.send("已被注册")
+                res.send("宸茶娉ㄥ唽")
             }
         }
     })
@@ -91,22 +63,11 @@ router.post('/login',function(req,res){
             if(results.length===1)
             {
                 if(results[0].password===para.pwd){
-                    //Session用来存储用户信息
                     console.log(results[0]);
-                    console.log("Your user name is "+results[0].userName);
-                    req.session.user=results[0].userName;
-                    console.log("You session is "+req.session.user)
-                    // res.render("navi.ejs",{username:results[0].username});
-                    // res.render("loginSuccess.ejs",{
-                    //     name:results[0].username,
-                    //     user:req.session.user
-                    //
-                    // })
-                    res.send(results[0].userName);
+                    res.json(results[0]);
                 }
                 else
                     res.send("Wrong Password");
-                // res.send("success ！ hello"+results[0].username);
             }
             else {
                 res.send("user not found")
