@@ -64,10 +64,7 @@ router.post('/login',function(req,res){
             {
                 if(results[0].password===para.pwd){
                     console.log(results[0]);
-                    console.log("Your user name is "+results[0].userName);
-                    req.session.user=results[0].userName;
-                    console.log("You session is "+req.session.user);
-                    res.send(results[0].userName);
+                    res.json(results[0]);
                 }
                 else
                     res.send("Wrong Password");
