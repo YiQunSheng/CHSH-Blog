@@ -91,7 +91,7 @@
             <div class="mdl-layout-spacer"></div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
                   mdl-textfield--floating-label mdl-textfield--align-right">
-                <label id="search" class="mdl-button mdl-js-button mdl-button--icon"
+                    <label id="search" class="mdl-button mdl-js-button mdl-button--icon"
                        for="waterfall-exp">
                     <i class="material-icons">search</i>
                 </label>
@@ -102,8 +102,8 @@
             </div>
         </div>
         <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
-            <a href="/" class="mdl-layout__tab">主页</a>
-            <a href="/article/articlePage" class="mdl-layout__tab is-active">文章列表</a>
+            <a href="/" class="mdl-layout__tab is-active">主页</a>
+            <a href="/article/articlePage" class="mdl-layout__tab">文章列表</a>
             <a href="#features" class="mdl-layout__tab">最近访客</a>
             <a href="#features" class="mdl-layout__tab">推荐</a>
             <a href="/article/writeArticle" class="mdl-layout__tab">发布文章</a>
@@ -112,53 +112,36 @@
 
     <!-- 导航栏结束 -->
     <main class="mdl-layout__content">
+        <br>
+        <p id="searchAmount">一共查询到<%=passages.length%>条结果</p>
         <div class="container passageContent">
-        <div class="mdl-grid passageList">
-             <!--card-->
-            <!--<%for (var i=0;i<passages.length;i++){%>-->
-            <!--<section class="section&#45;&#45;center mdl-grid mdl-grid&#45;&#45;no-spacing mdl-cell&#45;&#45;12-col mdl-shadow&#45;&#45;2dp">-->
-                <!--<div class="mdl-card mdl-cell mdl-cell&#45;&#45;12-col">-->
-                    <!--<div class="mdl-card__supporting-text">-->
-                        <!--<h4><%=passages[i].articleTitle%></h4>-->
-                        <!--作者：<%=passages[i].author%> | <%=passages[i].articleWriteDate%>-->
-                    <!--</div>-->
-                    <!--<div class="mdl-card__actions">-->
-                        <!--<a href="/article/articleDetail/<%=passages[i].articleId%>" class="mdl-button">阅读全文</a>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--&lt;!&ndash; 菜单 &ndash;&gt;-->
-                <!--<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button&#45;&#45;icon" id="<%=passages[i].articleId%>">-->
-                    <!--<i class="material-icons">more_vert</i>-->
-                <!--</button>-->
-                <!--&lt;!&ndash; 菜单列表 &ndash;&gt;-->
-                <!--<ul class="mdl-menu mdl-js-menu mdl-menu&#45;&#45;bottom-right" for="<%=passages[i].articleId%>">-->
-                    <!--<li class="mdl-menu__item">Lorem</li>-->
-                    <!--<li class="mdl-menu__item" disabled>Ipsum</li>-->
-                    <!--<li class="mdl-menu__item">Dolor</li>-->
-                <!--</ul>-->
-            <!--</section>-->
-            <!--<%}%>-->
-
-
+            <div class="mdl-grid passageList">
+                <!--card-->
+                <%for (var i=0;i<passages.length;i++){%>
+                <section class="section--center mdl-grid mdl-grid--no-spacing mdl-cell--12-col mdl-shadow--2dp">
+                <div class="mdl-card mdl-cell mdl-cell--12-col">
+                <div class="mdl-card__supporting-text">
+                <h4><%=passages[i].articleTitle%></h4>
+                作者：<%=passages[i].author%> | <%=passages[i].articleWriteDate%>
+                </div>
+                <div class="mdl-card__actions">
+                <a href="/article/articleDetail/<%=passages[i].articleId%>" class="mdl-button">阅读全文</a>
+                </div>
+                </div>
+                <!-- 菜单 -->
+                <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="<%=passages[i].articleId%>">
+                <i class="material-icons">more_vert</i>
+                </button>
+                <!-- 菜单列表 -->
+                <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="<%=passages[i].articleId%>">
+                <li class="mdl-menu__item">Lorem</li>
+                <li class="mdl-menu__item" disabled>Ipsum</li>
+                <li class="mdl-menu__item">Dolor</li>
+                </ul>
+                </section>
+                <%}%>
+            </div>
         </div>
-        </div>
-        <!-- 第四列两个圆圈 -->
-        <section class="section--footer mdl-color--white mdl-grid">
-            <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
-                <div class="section__circle-container__circle mdl-color--accent section__circle--big"></div>
-            </div>
-            <div class="section__text mdl-cell mdl-cell--4-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-                <h5>Lorem ipsum dolor sit amet</h5>
-                Qui sint ut et qui nisi cupidatat. Reprehenderit nostrud proident officia exercitation anim et pariatur ex.
-            </div>
-            <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
-                <div class="section__circle-container__circle mdl-color--accent section__circle--big"></div>
-            </div>
-            <div class="section__text mdl-cell mdl-cell--4-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-                <h5>Lorem ipsum dolor sit amet</h5>
-                Qui sint ut et qui nisi cupidatat. Reprehenderit nostrud proident officia exercitation anim et pariatur ex.
-            </div>
-        </section>
         <!-- 下方状态栏结束 -->
         <footer class="mdl-mega-footer">
             <div class="mdl-mega-footer--middle-section">
@@ -258,63 +241,42 @@
 <script src="/js/dropload.min.js"></script>
 </body>
 <script type="text/javascript">
-     $(function(){
-         var page=0;
-         var size=5;
-         $('.passageContent').dropload({
-             scrollArea: window,
-             loadDownFn:function(me){
-                 page++;
-                 var result='';
-                 $.ajax({
-                     type: 'GET',
-                     url: 'http://127.0.0.1:3000/article/getAll?page='+page+'&size='+size,
-                     dataType: 'json',
-                     success:function(passages){
-                         console.log(passages);
-                         var arrLen=passages.length;
-                         if(arrLen>0){
-                             for(var i=0;i<arrLen;i++){
+  $(document).ready(function(){
+      $("#search").click(function () {
+              console.log("点击成功");
+              var searchContent = $("#waterfall-exp").val();
+              if (searchContent !== "") {
+                  $('#searchAmount').empty();
+                  $(".passageList").empty();
+                  $.ajax({
+                      type: 'GET',
+                      url: 'http://127.0.0.1:3000/article/articleResult?searchContent=' + searchContent,
+                      dataType: 'json',
+                      success: function (passages) {
+                          console.log(passages);
+                          var arrLen = passages.length;
+                          console.log(arrLen);
+                          var result = "";
+                          if (arrLen > 0) {
+                              for (var i = 0; i < arrLen; i++) {
+                                  result += '<section class="section--center mdl-grid mdl-grid--no-spacing mdl-cell--12-col mdl-shadow--2dp opacity">' +
+                                      '<div class="mdl-card mdl-cell mdl-cell--12-col">' +
+                                      '<div class="mdl-card__supporting-text">' +
+                                      '<h4>' + passages[i].articleTitle + '</h4>' + ' 作者：' + passages[i].articleAuthor + '|' + passages[i].articleWriteDate +
+                                      '</div>' +
+                                      '<div class="mdl-card__actions">' +
+                                      ' <a href="/article/articleDetail/' + passages[i].articleId + '" class="mdl-button">阅读全文</a>' +
+                                      '</div>' +
+                                      '</div>' + '</section>'
+                              }
+                          }
+                          $('.passageList').append(result);
+                          $('#searchAmount').text("一共查询到" + arrLen + "条结果");
+                      }
 
-                                 result+='<section class="section--center mdl-grid mdl-grid--no-spacing mdl-cell--12-col mdl-shadow--2dp opacity">'+
-                                    '<div class="mdl-card mdl-cell mdl-cell--12-col">'+
-                                     '<div class="mdl-card__supporting-text">'+
-                                     '<h4>'+passages[i].articleTitle+'</h4>'+ ' 作者：'+passages[i].articleAuthor+'|'+passages[i].articleWriteDate+
-                             '</div>'+
-                                 '<div class="mdl-card__actions">'+
-                                    ' <a href="/article/articleDetail/'+passages[i].articleId+'" class="mdl-button">阅读全文</a>'+
-                                     '</div>'+
-                                     '</div>'+ '</section>'
-                             }
-                         }
-                         // 如果没有数据
-                         else{
-                             // 锁定
-                             me.lock();
-                             // 无数据
-                             me.noData();
-                         }
-                         setTimeout(function () {
-                             $('.passageList').append(result);
-                             // 每次数据插入，必须重置
-                             me.resetload();
-                         },2000);
-                     },
-                     error: function(xhr, err){
-                         console.log(err.message);
-                         alert('Ajax error!');
-                         // 即使加载出错，也得重置
-                         me.resetload();
-                     }
-                 })
-             }
-         })
-         $("#search").click(function(){
-             var searchContent=$("#waterfall-exp").val();
-             if(searchContent!==""){
-                 window.location.href="http://127.0.0.1:3000/article/articleSearch?q="+searchContent;
-             }
-         })
-     })
+                  })
+              }
+      })
+  })
 </script>
 </html>

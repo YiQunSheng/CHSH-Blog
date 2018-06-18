@@ -152,5 +152,42 @@ router.post('/addReply',function (req,res) {
             res.send("addReply sucess");
         }
     })
-})
+});
+router.get('/articleSearch',function(req,res){
+    if(req.method=="POST"){
+        var param=req.body;
+    }else{
+        var param=req.query ||req.params;
+    }
+    var searchCondition='%'+param.q+'%';
+    client.query(articleSQL.queryArticleByName,[searchCondition],function (err,result) {
+        if(err)
+            throw err;
+        else{
+            console.log(result);
+            res.render('articleSearch.ejs',{passages:result});
+        }
+    })
+
+});
+//返回查询结果
+router.get('/articleResult',function(req,res){
+
+    if(req.method=="POST"){
+        var param=req.body;
+    }else{
+        var param=req.query ||req.params;
+    }
+    console.log(param);
+    var searchCondition='%'+param.searchContent+'%';
+    client.query(articleSQL.queryArticleByName,[searchCondition],function (err,result) {
+        if(err)
+            throw err;
+        else{
+            console.log(result);
+             res.json(result);
+        }
+    })
+
+});
 module.exports = router;
