@@ -101,17 +101,29 @@
             color: #fff;
         }
         h3{
-            line-height: 10px;
+            line-height: 8px;
+        }
+        .mdl-chip{
+            margin: 5px;
+        }
+        .tagsSection{
+            padding: 15px;
+            background-color: white;
+        }
+        .mdl-chip >a{
+            text-decoration: none;
+            font-size: 13px;
+            font-family: "Roboto","Helvetica","Arial",sans-serif;
+            color: black;
         }
     </style>
 </head>
 <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header ">
     <!--导航栏-->
-    <header class="mdl-layout__header mdl-layout__header--waterfall mdl-color--primary">
+    <header class="mdl-layout__header mdl-layout__header--waterfall header-big ">
         <!--为了header大一点设置的header-row-->
         <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-
         </div>
         <div class="mdl-layout mdl-layout__header-row">
             <h3>CHSH的博客</h3>
@@ -121,8 +133,8 @@
         <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
             <a href="/" class="mdl-layout__tab is-active">主页</a>
             <a href="/article/articlePage" class="mdl-layout__tab">文章列表</a>
-            <a href="#features" class="mdl-layout__tab">最近访客</a>
             <a href="/page" class="mdl-layout__tab">推荐</a>
+            <a href="/aboutUs" class="mdl-layout__tab">关于我们</a>
             <a href="/article/writeArticle" id="submitArticle" class="mdl-layout__tab">发布文章</a>
         </div>
     </header>
@@ -130,11 +142,11 @@
         <!--正文部分-->
         <div class="mdl-grid">
             <div class="mdl-cell mdl-cell--9-col">
-                <!-- Wide card with share menu button -->
+                    <!-- 欢迎卡片 -->
                 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-cell--12-col mdl-shadow--2dp">
                     <div class="recommeng-card mdl-card mdl-shadow--2dp">
                         <div class="mdl-card__title">
-                            <h2 class="mdl-card__title-text">欢迎来到CHSH的博客</h2>
+                            <h2 class="mdl-card__title-text" style="font-size: 48px;font-family: 'Arial'">欢迎来到CHSH的博客</h2>
                         </div>
                         <div class="mdl-card__supporting-text">
                             在这里，您可以了解JS知识，学习制作Web的技能
@@ -144,33 +156,19 @@
                                 探索更多...
                             </a>
                         </div>
-                        <div class="mdl-card__menu">
-                            <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-                                <i class="material-icons">share</i>
-                            </button>
-                        </div>
                     </div>
                 </section>
-
+                    <!--文章推荐-->
                 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-cell--12-col mdl-shadow--2dp">
                     <div class="mdl-card mdl-cell mdl-cell--12-col">
                         <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
                             <h4 class="mdl-cell mdl-cell--12-col">文章推荐</h4>
-
+                            <%for (var i=0;i<fourArticles.length;i++){%>
                             <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-                                <h5>JavaScript学习</h5>
-                                盛轶群 wrote on 2018-6-11  <a href="#">proident minim</a>.
+                                <h5><%=fourArticles[i].articleTitle%></h5>
+                                作者：<%=fourArticles[i].articleAuthor%> wrote on <%=fourArticles[i].articleWriteDate%><a href="/article/articleDetail/<%=fourArticles[i].articleId%>" class="mdl-button">learn more</a>
                             </div>
-
-                            <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-                                <h5>JavaScript学习</h5>
-                                盛轶群 wrote on 2018-6-11  <a href="#">proident minim</a>.
-                            </div>
-
-                            <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-                                <h5>JavaScript学习</h5>
-                                盛轶群 wrote on 2018-6-11  <a href="#">proident minim</a>.
-                            </div>
+                            <%}%>
                         </div>
                         <div class="mdl-card__actions">
                             <a href="/article/articlePage" class="mdl-button">探索更多...</a>
@@ -179,15 +177,16 @@
                 </section>
                 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-cell--12-col mdl-shadow--2dp">
                     <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white">
-                        <i class="material-icons">play_circle_filled</i>
+                        <!--<i class="material-icons">play_circle_filled</i>-->
+                        <h1>JS</h1>
                     </header>
                     <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
                         <div class="mdl-card__supporting-text">
-                            <h4>Features</h4>
-                            Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Nostrud in laboris labore nisi amet do dolor eu fugiat consectetur elit cillum esse.
+                            <h4>Always On The Road</h4>
+                             JS学习的的道路——了解我们如何制作个博客的
                         </div>
                         <div class="mdl-card__actions">
-                            <a href="#" class="mdl-button">Read our features</a>
+                            <a href="#" class="mdl-button">Learn our experience</a>
                         </div>
                     </div>
 
@@ -226,32 +225,47 @@
                         </div>
                     </div>
                 </section>
+                <section class="section--center mdl-grid mdl-grid--no-spacing mdl-cell--12-col mdl-shadow--2dp tagsSection" >
+                    <div class="mdl-card__title" style="width: 100%">
+                        <h2 class="mdl-card__title-text">标签</h2>
+                    </div>
+                    <span class="mdl-chip">
+                        <a class="mdl-chip__text">Basic Chip（2）</a></span>
+                        <%for(var i=0;i<tags.length;i++){%>
+                    <span class="mdl-chip">
+                        <a class="mdl-chip__text" href="/article/tagSearch?q=<%=tags[i].tags%>"><%=tags[i].tags%>(<%=tags[i].count%>)</a></span>
+                    <%}%>
+                </section>
+            </div>
+            <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-phone">
+
             </div>
             <!--下方两个圆圈-->
-            <section class="section--footer mdl-color--white mdl-grid">
+            <section class="section--footer mdl-color--white mdl-grid" style="width: 100%">
                 <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
-                    <div class="section__circle-container__circle mdl-color--accent section__circle--big"></div>
+                    <div class="section__circle-container__circle mdl-color--primary section__circle--big">
+                    </div>
                 </div>
                 <div class="section__text mdl-cell mdl-cell--4-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-                    <h5>Lorem ipsum dolor sit amet</h5>
-                    Qui sint ut et qui nisi cupidatat. Reprehenderit nostrud proident officia exercitation anim et pariatur ex.
+                    <h5>SYQ</h5>
+                    USE MDL AND EXPRESS TO WRITE BLOGS
                 </div>
                 <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
-                    <div class="section__circle-container__circle mdl-color--accent section__circle--big"></div>
+                    <div class="section__circle-container__circle mdl-color--primary section__circle--big"></div>
                 </div>
                 <div class="section__text mdl-cell mdl-cell--4-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-                    <h5>Lorem ipsum dolor sit amet</h5>
-                    Qui sint ut et qui nisi cupidatat. Reprehenderit nostrud proident officia exercitation anim et pariatur ex.
+                    <h5>CXY</h5>
+                    USE MDL AND EXPRESS TO WRITE BLOGS
                 </div>
             </section>
         </div>
         <!--页脚部分-->
         <footer class="mdl-mini-footer">
             <div class="mdl-mini-footer__left-section">
-                <div class="mdl-logo">Title</div>
+                <div class="mdl-logo">CHSH'sBlog</div>
                 <ul class="mdl-mini-footer__link-list">
-                    <li><a href="#">Help</a></li>
-                    <li><a href="#">Privacy & Terms</a></li>
+                    <li><a href="/mdl">We Use Google Material Degisn Lite</a></li>
+                    <li><a href="#">ZUCC-CHSH Group</a></li>
                 </ul>
             </div>
         </footer>
@@ -259,27 +273,36 @@
 </div>
 <!--浮动按钮-->
 <ul class="mdl-menu  mdl-menu--top-right mdl-js-menu mdl-js-ripple-effect" for="more-fab" style="margin-bottom: 10px;">
-    <li class="mdl-menu__item">个人信息</li>
-    <li class="mdl-menu__item">???</li>
-    <a class="mdl-menu__item" href="/users/loginPage" style="color: black">登录</a>
-    <li class="mdl-menu__item">登出</li>
-    <li class="mdl-menu__item" id="ToTop">返回顶部</li>
+    <!--<li class="mdl-menu__item">个人信息</li>-->
+    <a class="mdl-menu__item" href="/users/loginPage" id="login-item" style="color: black">登录</a>
+    <a class="mdl-menu__item" href="/users/logout" id="logout" style="color: black">登出</a>
+    <!--<li class="mdl-menu__item" id="ToTop">返回顶部</li>-->
 </ul>
-<a id="more-fab" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast"><i class="material-icons">person</i></a>
+<a id="more-fab" class="mdl-button mdl-js-button  mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">未登陆</a>
 <!--<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>-->
 </body>
 <script src="/js/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="/js/material.js"></script>
 <script type="text/javascript" src="/js/jquery.toTop.js"></script>
 <script type="text/javascript" src="/js/jquerysession.js"></script>
+
 <script>
     $(document).ready(function () {
-     
         if($.session.get('user')===undefined||$.session.get('role')==='visitor'){
             $('#submitArticle').remove();
+            $("#more-fab").text("未登陆");
+        }
+        if($.session.get('user')!=undefined){
+            $("#more-fab").text('你好 '+$.session.get('user'));
+            $("#login-item").remove();
         }
         $("#ToTop").click(function () {
-            $('html, body').animate({scrollTop: 0}, 500);
+            // $('html, body').animate({scrollTop: 0}, 500);
+            scrollTo(0,0)
+            // alert("click")
+        })
+        $("#logout").click(function () {
+            $.session.clear();
         })
     })
 </script>

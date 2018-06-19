@@ -62,7 +62,7 @@
         }
 
         .login-main {
-            margin-top: -35vh;
+            margin-top: -45vh;
             /*-webkit-flex-shrink: 0;*/
             /*-ms-flex-negative: 0;*/
             /*flex-shrink: 0;*/
@@ -86,28 +86,35 @@
             <div class="mdl-cell mdl-cell--4-col mdl-cell--12-phone mdl-cell--4-offset-desktop mdl-cell--2-offset-tablet mdl-grid ">
                 <div class="mdl-card demo-card-event mdl-card mdl-shadow--2dp mdl-cell mdl-cell--middle mdl-grid--no-spacing">
                     <div class="mdl-card__title mdl-grid" style="margin: 0 auto;padding: 16px">
-                        <i class="material-icons" style="font-size: 32px">person</i><p style="font-size: 32px">Sign In</p>
+                        <i class="material-icons" style="font-size: 32px">person</i><p style="font-size: 32px">Sign Up</p>
                     </div>
                     <div class="mdl-card__actions mdl-card--border mdl-grid" style="padding: 16px">
                         <form action="/users/login">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell cdl-cell--12-col" style="width: 90%;margin: 10px">
-                                <input class="mdl-textfield__input" type="text" id="userid">
+                                <input class="mdl-textfield__input" pattern="[A-Z,a-z,0-9]{4,8}$" type="text" id="userid">
                                 <label class="mdl-textfield__label" for="Name">UserID</label>
-                                <span class="mdl-textfield__error">Letters and spaces only</span>
+                                <span class="mdl-textfield__error">Letters and numbers only,4-8 long</span>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell cdl-cell--12-col" style="width: 90%;margin: 10px">
+                                <input class="mdl-textfield__input" pattern="[A-Z,a-z,0-9]{3,20}$" type="text" id="userName">
+                                <label class="mdl-textfield__label" for="Name">UserName</label>
+                                <span class="mdl-textfield__error">Letters and numbers only,3-20 long</span>
                             </div>
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell cdl-cell--12-col" style="width: 90%">
-                                <input class="mdl-textfield__input" type="password" id="pwd">
+                                <input class="mdl-textfield__input" pattern="[A-Z,a-z,0-9]{4,15}$" type="password" id="pwd">
                                 <label class="mdl-textfield__label" for="Email">PASSWORD</label>
+                                <span class="mdl-textfield__error">Letters and numbers only,4-15 long</span>
                             </div>
-                            <div class="mdl-grid">
-                                <div class="mdl-cell mdl-cell--8-col"><a href="#" style="text-decoration: none;width: 100%">Register Now!</a></div>
-                                <div class="mdl-cell mdl-cell--4-col"><a href="#" style="text-decoration: none;width: 100%">ForgetPassword?</a></div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell cdl-cell--12-col" style="width: 90%">
+                                <input class="mdl-textfield__input" pattern="[A-Z,a-z,0-9]{4,15}$" type="password" id="pwdcfm">
+                                <label class="mdl-textfield__label" for="Email">CONFIRM PASSWORD</label>
+                                <span class="mdl-textfield__error">Letters and numbers only,4-15 long</span>
                             </div>
 
                         </form>
                         <div class="mdl-grid"style="width: 100%;">
                             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-cell-middle" style="margin: 0 auto;width: 80%" id="signin">
-                                SIGN IN
+                                SIGN UP
                             </button>
                         </div>
 
@@ -125,19 +132,43 @@
         $("#signin").click(function () {
             var userid = $("#userid").val();
             var pwd = $("#pwd").val();
+            var userName = $("#userName").val();
+            var pwdConfirm = $("#pwdcfm").val();
+            if(pwd!==pwdConfirm){
+                alert("Password not equal!");
+                return;
+            }
+            if(pwd===""||userid===""||userName===""||pwdConfirm===""){
+                alert("Cannot be empty!");
+                return;
+            }
+            else if(userid.length>8||userid.length<4){
+                alert("USERID Input ERROR!");
+                return;
+            }
+            else if(userName.length>8||userName.length<4){
+                alert("USENAME Input ERROR!");
+                return;
+            }
+            else if(pwd.length>16||pwd.length<4){
+                alert("Pwd Input ERROR!");
+                return;
+            }
             var data = {
                 userid:userid,
-                pwd:pwd
+                pwd:pwd,
+                userName:userName,
             }
             $.ajax({
                 data:data,
                 type:"POST",
-                url:"/users/login",
+                url:"/users/reg",
                 success:function (msg) {
-                    if(msg!=="Wrong Password"||msg!=="user not found")
+                    if(msg==="That id has already been registered")
                         alert(msg);
                     else{
-                        window.location.href = "/";
+                        alert("Register Success");
+                        window.location.href = "/users/loginPage";
                     }
 
                 },

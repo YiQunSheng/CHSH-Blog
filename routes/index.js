@@ -8,7 +8,26 @@ var client=mysql.createConnection(dbConfig.mysql);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('mdindex.ejs');
+    var fourArticles;
+    client.query(articleSQL.queryFour,function (err,results) {
+        if(err)
+            throw err;
+        else{
+            fourArticles = results;
+            console.log(fourArticles);
+
+            client.query(articleSQL.queryTags,function (err,results2) {
+                if(err)
+                    throw err;
+                else{
+                    var tagsInfo = results2;
+                    console.log(tagsInfo)
+                    res.render('mdindex.ejs',{fourArticles:fourArticles,tags:tagsInfo});
+                }
+            })
+        }
+    })
+
 });
 // router.get('/reg', function(req, res, next) {
 //   res.render('reg', { title: 'Register' });
@@ -31,6 +50,12 @@ res.render('testhtml', { title: 'Express' });
 })
 router.get('/page',function(req,res){
     res.render('pageTest.ejs', null);
+})
+router.get('/aboutUS',function(req,res){
+    res.render('pageTest.ejs', null);
+})
+router.get('/mdl',function (req,res) {
+    res.redirect('http://www.getmdl.io')
 })
 //导出这个路由并在app.js中通过app.use('/', routes)加载
 module.exports = router;

@@ -2,6 +2,7 @@ var express = require('express');
 var dbConfig=require('../db/DBConfig');
 var user=require('../db/usersql');
 var mysql=require('mysql');
+var articleSQL = require('../db/articlesql');
 var session = require('express-session');
 var client=mysql.createConnection(dbConfig.mysql);
 var router = express.Router();
@@ -35,7 +36,7 @@ router.post('/reg',function(req,res,next){
         }
         else {
             if(results.length===0){
-                client.query(user.insert,[para.userid,para.username,para.password,'visitor'],function(err,result){
+                client.query(user.insert,[para.userid,para.userName,para.pwd,'visitor'],function(err,result){
                     if(err)
                         throw err;
                     else {
@@ -43,15 +44,29 @@ router.post('/reg',function(req,res,next){
                     }
                 })}
             else {
-                res.send("已被注册")
+                res.send("That id has already been registered")
             }
         }
     })
 });
+router.get('/registerPage',function (req,res) {
+    res.render("register.ejs",null);
+})
 router.get('/loginPage',function (req,res) {
     res.render("login.ejs",null);
 })
-
+router.get('/logout',function (req,res) {
+    var fourArticles;
+    client.query(articleSQL.queryFour,function (err,results) {
+        if(err)
+            throw err;
+        else{
+            fourArticles = results;
+            console.log(fourArticles);
+            res.render('mdindex.ejs',{fourArticles:fourArticles});
+        }
+    })
+})
 router.post('/login',function(req,res){
     var para =req.body;
     console.log(para);
@@ -75,4 +90,5 @@ router.post('/login',function(req,res){
         }
     })
 })
+
 module.exports = router;

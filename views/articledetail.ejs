@@ -34,7 +34,20 @@
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-pink.min.css">
     <link rel="stylesheet" href="/stylesheets/styles-article.css">
     <style>
-        #view-source {
+        .replyContent {
+            display: none;
+        }
+
+        .articleArea {
+            overflow-x: auto;
+            overflow-y: auto;
+        }
+
+        .mdl-dialog__title {
+            font-size: 1.5rem;
+        }
+
+        #more-fab {
             position: fixed;
             display: block;
             right: 0;
@@ -43,33 +56,15 @@
             margin-bottom: 40px;
             z-index: 900;
         }
-        .replyContent{
-            display: none;
-        }
-        .articleArea{
-            overflow-x: auto;
-            overflow-y: auto;
-        }
-        .mdl-dialog__title{
-            font-size: 1.5rem;
-        }
     </style>
 </head>
 <body>
 <div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
     <header class="demo-header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">
         <div class="mdl-layout__header-row">
-            <a class="mdl-layout-title" href="/article/articlePage" style="text-decoration:none;color:#424242">CHSH的博客</a>
+            <a class="mdl-layout-title" href="/article/articlePage"
+               style="text-decoration:none;color:#424242">CHSH的博客</a>
             <div class="mdl-layout-spacer"></div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-                <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
-                    <i class="material-icons">search</i>
-                </label>
-                <div class="mdl-textfield__expandable-holder">
-                    <input class="mdl-textfield__input" type="text" id="search">
-                    <label class="mdl-textfield__label" for="search">Enter your query...</label>
-                </div>
-            </div>
         </div>
     </header>
     <div class="demo-ribbon"></div>
@@ -78,94 +73,100 @@
             <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
             <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col articleArea">
                 <div class="demo-crumbs mdl-color-text--grey-500">
-                    CHSH &gt; 文章列表 &gt; <%=articleDetail.articleTitle%>
+                    CHSH &gt; 文章列表 &gt; <%= articleDetail.articleTitle %>
                 </div>
-                <h1 id="rxjs-66-70-"><%=articleDetail.articleTitle%></h1>
-                <%-articleDetail.articleContent%>
+                <p>作者：<%-articleDetail.articleAuthor%> | 发布日期：<%-articleDetail.articleWriteDate%></p>
+                <span class="mdl-chip"><span class="mdl-chip__text"><%-articleDetail.tags%></span></span>
+                <h1 id="rxjs-66-70-"><%= articleDetail.articleTitle %></h1>
+                <%- articleDetail.articleContent %>
             </div>
         </div>
         <!--评论部分-->
         <div class="demo-container mdl-grid">
             <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
             <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
-        <%if(articleComment.length!==0){%>
+                <% if(articleComment.length !== 0){ %>
                 <h2 id="rxjs-66-70-">评论区域</h2>
                 <ul class="demo-list-three mdl-list ">
-                        <%for(var i=0;i<articleComment.length;i++){%>
-                            <li class="mdl-list__item mdl-list__item--three-line">
+                    <% for(var i = 0;i < articleComment.length;i++){ %>
+                    <li class="mdl-list__item mdl-list__item--three-line">
     <span class="mdl-list__item-primary-content">
       <i class="material-icons mdl-list__item-avatar">person</i>
-      <span id="commentAuthor"><%=articleComment[i].commentAuthor%></span>的评论
+      <span id="commentAuthor"><%= articleComment[i].commentAuthor %></span>的评论
       <span class="mdl-list__item-text-body">
-          <%=articleComment[i].commentContent%>
+          <%= articleComment[i].commentContent %>
       </span>
         <!--用于存储评论ID-->
-        <p  id="commentId" style="display:none"><%=articleComment[i].commentId%></p>
+        <p id="commentId" style="display:none"><%= articleComment[i].commentId %></p>
     </span>
-                                <span class="mdl-list__item-secondary-content">
+                        <span class="mdl-list__item-secondary-content">
 
-      <a class="mdl-list__item-secondary-action show-dialog replyCommentModal" href="#" ><i class="material-icons">reply</i></a>
+      <a class="mdl-list__item-secondary-action show-dialog replyCommentModal" href="#"><i
+                  class="material-icons">reply</i></a>
                              <span class="mdl-list__item-secondary-info">Reply</span>
     </span>
-                                <span class="mdl-list__item-secondary-content">
+                        <span class="mdl-list__item-secondary-content">
 
       <a class="mdl-list__item-secondary-action moreBtn" href="#"><i class="material-icons">list</i></a>
                              <span class="mdl-list__item-secondary-info">More</span>
     </span>
-                            </li>
+                    </li>
                     <!--回复部分-->
-                    <%if(articleReply[i].length!==0){%>
+                    <% if(articleReply[i].length !== 0){ %>
 
                     <div class="mdl-grid replyContent">
                         <ul class="demo-list-two mdl-list mdl-cell mdl-cell--8-col">
-                            <%for(var j=0;j<articleReply[i].length;j++){%>
+                            <% for(var j = 0;j < articleReply[i].length;j++){ %>
                             <li class="mdl-list__item mdl-list__item--two-line">
     <span class="mdl-list__item-primary-content">
       <i class="material-icons mdl-list__item-avatar">person</i>
 
-        <span id="replyAuthor"><%=articleReply[i][j].replyAuthor%></span>回复<span ><%=articleReply[i][j].beRepliedAuthor%></span>
+        <span id="replyAuthor"><%= articleReply[i][j].replyAuthor %></span>回复<span><%= articleReply[i][j].beRepliedAuthor %></span>
         <!--该项用于存储replyCommentId-->
-        <p  id="replyCommentId" style="display:none"><%=articleComment[i].commentId%></p>
-      <span class="mdl-list__item-sub-title"><%=articleReply[i][j].replyContent%></span>
+        <p id="replyCommentId" style="display:none"><%= articleComment[i].commentId %></p>
+      <span class="mdl-list__item-sub-title"><%= articleReply[i][j].replyContent %></span>
     </span>
                                 <span class="mdl-list__item-secondary-content">
 
-      <a class="mdl-list__item-secondary-action show-dialog replyReplyModal" href="#"><i class="material-icons">reply</i></a>
+      <a class="mdl-list__item-secondary-action show-dialog replyReplyModal" href="#"><i
+                  class="material-icons">reply</i></a>
       <span class="mdl-list__item-secondary-info">Reply</span>
                             </span>
                             </li>
-                            <%}%>
+                            <% } %>
                         </ul>
                     </div>
 
-                      <%}%>
-                        <%}%>
-                    <%}%>
+                    <% } %>
+                    <% } %>
+                    <% } %>
                 </ul>
                 <!-- Expandable Textfield -->
                 <!--提交评论-->
                 <div class="mdl-grid">
                     <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
                         <div class="mdl-textfield mdl-js-textfield">
-                            <textarea  id="commentContent" class="mdl-textfield__input" type="text" rows= "3" id="sample5" ></textarea>
+                            <textarea id="commentContent" class="mdl-textfield__input" type="text" rows="3"
+                                      id="sample5"></textarea>
                             <label class="mdl-textfield__label" for="sample5">有什么想对作者说</label>
                         </div>
                     </div>
                     <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
-                    <!-- Accent-colored raised button with ripple -->
-                <button  id="submitCommentButton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-                    提交评论
-                </button>
+                        <!-- Accent-colored raised button with ripple -->
+                        <button id="submitCommentButton"
+                                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                            提交评论
+                        </button>
                     </div>
                 </div>
-                </div>
+            </div>
         </div>
-        <footer class="demo-footer mdl-mini-footer">
-            <div class="mdl-mini-footer--left-section">
-                <ul class="mdl-mini-footer--link-list">
-                    <li><a href="#">Help</a></li>
-                    <li><a href="#">Privacy and Terms</a></li>
-                    <li><a href="#">User Agreement</a></li>
+        <footer class="mdl-mini-footer">
+            <div class="mdl-mini-footer__left-section">
+                <div class="mdl-logo">CHSH'sBlog</div>
+                <ul class="mdl-mini-footer__link-list">
+                    <li><a href="/mdl">We Use Google Material Degisn Lite</a></li>
+                    <li><a href="#">ZUCC-CHSH Group</a></li>
                 </ul>
             </div>
         </footer>
@@ -178,10 +179,10 @@
     <h6 class="mdl-dialog__title">回复内容</h6>
     <div class="mdl-dialog__content">
         <!--<p>-->
-            <!--Allowing us to collect data will let us get you the information you want faster.-->
+        <!--Allowing us to collect data will let us get you the information you want faster.-->
         <!--</p>-->
         <div class="mdl-textfield mdl-js-textfield">
-            <textarea class="mdl-textfield__input replyContent" type="text" rows= "3" id="sample5" ></textarea>
+            <textarea class="mdl-textfield__input replyContent" type="text" rows="3" id="sample5"></textarea>
             <label class="mdl-textfield__label" for="sample5">请输入回复的内容</label>
         </div>
     </div>
@@ -190,16 +191,20 @@
         <button type="button" class="mdl-button close">取消</button>
     </div>
 </dialog>
-<a href="#" target="_blank"
-   id="view-source"
-   class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">View
-    Source</a>
+<ul class="mdl-menu  mdl-menu--top-right mdl-js-menu mdl-js-ripple-effect" for="more-fab" style="margin-bottom: 10px;">
+    <!--<li class="mdl-menu__item">个人信息</li>-->
+    <a class="mdl-menu__item" href="/users/loginPage" id="login-item" style="color: black">登录</a>
+    <a class="mdl-menu__item" href="/users/logout" id="logout" style="color: black">登出</a>
+    <!--<li class="mdl-menu__item" id="ToTop">返回顶部</li>-->
+</ul>
+<a id="more-fab"
+   class="mdl-button mdl-js-button  mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">未登陆</a>
 <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 <script src="/js/jquery-3.3.1.js"></script>
 <script src="/js/jquerysession.js"></script>
 <script type="text/javascript">
     var dialog = document.querySelector('dialog');
-    if (! dialog.showModal) {
+    if (!dialog.showModal) {
         dialogPolyfill.registerDialog(dialog);
     }
     $(document).ready(function () {
@@ -235,15 +240,15 @@
             return format;
         };
 
-          var articleId=parseInt(<%=articleDetail.articleId%>);
-               $.session.set('author',$.session.get('user'));
-        $(".moreBtn").click(function (){
+        var articleId = parseInt(<%= articleDetail.articleId %>);
+        $.session.set('author', $.session.get('user'));
+        $(".moreBtn").click(function () {
             $(this).parent().parent().next(".replyContent").slideToggle(800);
             // $("#comment1").slideToggle(800);
         })
-        $("#submitCommentButton").click(function(){
-            if($.session.get('user')===undefined){
-                window.location.href='/users/loginPage';
+        $("#submitCommentButton").click(function () {
+            if ($.session.get('user') === undefined) {
+                window.location.href = '/users/loginPage';
             }
             else {
                 var currentTime = new Date().format("yyyy-MM-dd hh:mm:ss");
@@ -268,8 +273,8 @@
             }
         })
         $(".replyCommentModal").click(function () {
-            if($.session.get('user')===undefined){
-                window.location.href='/users/loginPage';
+            if ($.session.get('user') === undefined) {
+                window.location.href = '/users/loginPage';
             }
             else {
                 //获得评论的Id
@@ -279,9 +284,9 @@
                 $.session.set("commentId", commentId);
             }
         })
-        $(".replyReplyModal").click(function(){
-            if($.session.get('user')===undefined){
-                window.location.href='/users/loginPage';
+        $(".replyReplyModal").click(function () {
+            if ($.session.get('user') === undefined) {
+                window.location.href = '/users/loginPage';
             }
             else {
                 //获得回复中评论的Id
@@ -293,30 +298,52 @@
             }
         })
         $(".submitReply").click(function () {
-            var currentTime=new  Date().format("yyyy-MM-dd hh:mm:ss");
-            var commentId=$.session.get("commentId");
-            var replyAuthor=$.session.get("author");
-            var beRepliedAuthor=$.session.get("beRepliedAuthor");
-            var replyContent=$(this).parent().parent().children(".mdl-dialog__content").children(".mdl-js-textfield").children(".replyContent").val();
+            var currentTime = new Date().format("yyyy-MM-dd hh:mm:ss");
+            var commentId = $.session.get("commentId");
+            var replyAuthor = $.session.get("author");
+            var beRepliedAuthor = $.session.get("beRepliedAuthor");
+            var replyContent = $(this).parent().parent().children(".mdl-dialog__content").children(".mdl-js-textfield").children(".replyContent").val();
             $.ajax({
-                data:{
-                    replyTime:currentTime,
-                    replyAuthor:replyAuthor,
+                data: {
+                    replyTime: currentTime,
+                    replyAuthor: replyAuthor,
                     beRepliedAuthor: beRepliedAuthor,
-                    replyContent:replyContent,
-                    commentId:commentId
+                    replyContent: replyContent,
+                    commentId: commentId
                 },
-                type:"POST",
-                url:"/article/addReply",
-                success:function (msg) {
+                type: "POST",
+                url: "/article/addReply",
+                success: function (msg) {
                     alert(msg);
-                    window.location.href = "http://127.0.0.1:3000/article/articleDetail/<%=articleDetail.articleId%>";
+                    window.location.href = "http://127.0.0.1:3000/article/articleDetail/<%= articleDetail.articleId %>";
                 },
-                error:function () {
+                error: function () {
 
                 }
             })
 
+        })
+    })
+</script>
+<script type="text/javascript" src="/js/jquerysession.js"></script>
+
+<script>
+    $(document).ready(function () {
+        if ($.session.get('user') === undefined || $.session.get('role') === 'visitor') {
+            $('#submitArticle').remove();
+            $("#more-fab").text("未登陆");
+        }
+        if ($.session.get('user') != undefined) {
+            $("#more-fab").text('你好 ' + $.session.get('user'));
+            $("#login-item").remove();
+        }
+        $("#ToTop").click(function () {
+            // $('html, body').animate({scrollTop: 0}, 500);
+            scrollTo(0, 0)
+            // alert("click")
+        })
+        $("#logout").click(function () {
+            $.session.clear();
         })
     })
 </script>

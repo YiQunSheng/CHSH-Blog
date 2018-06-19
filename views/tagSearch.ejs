@@ -89,17 +89,7 @@
         </div>
         <div class=" mdl-layout__header-row">
             <div class="mdl-layout-spacer"></div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
-                  mdl-textfield--floating-label mdl-textfield--align-right">
-                    <label id="search" class="mdl-button mdl-js-button mdl-button--icon"
-                       for="waterfall-exp">
-                    <i class="material-icons">search</i>
-                </label>
-                <div class="mdl-textfield__expandable-holder">
-                    <input class="mdl-textfield__input" type="text" name="sample"
-                           id="waterfall-exp">
-                </div>
-            </div>
+            
         </div>
         <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
             <a href="/" class="mdl-layout__tab is-active">主页</a>
@@ -113,21 +103,22 @@
     <!-- 导航栏结束 -->
     <main class="mdl-layout__content">
         <br>
-        <p id="searchAmount">一共查询到<%=passages.length%>条结果</p>
+        <!--<p id="searchAmount">一共查询到条结果</p>-->
         <div class="container passageContent">
+            <h2>标签：<%-tagName%>(<%=passages.length%>)</h2>
             <div class="mdl-grid passageList">
                 <!--card-->
                 <%for (var i=0;i<passages.length;i++){%>
                 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-cell--12-col mdl-shadow--2dp">
-                <div class="mdl-card mdl-cell mdl-cell--12-col">
-                <div class="mdl-card__supporting-text">
-                <h4><%=passages[i].articleTitle%></h4>
-                作者：<%=passages[i].author%> | <%=passages[i].articleWriteDate%> | 标签：<%=passages[i].tags%>
-                </div>
-                <div class="mdl-card__actions">
-                <a href="/article/articleDetail/<%=passages[i].articleId%>" class="mdl-button">阅读全文</a>
-                </div>
-                </div>
+                    <div class="mdl-card mdl-cell mdl-cell--12-col">
+                        <div class="mdl-card__supporting-text">
+                            <h4><%=passages[i].articleTitle%></h4>
+                            作者：<%=passages[i].author%> | <%=passages[i].articleWriteDate%> | 标签：<%=passages[i].tags%>
+                        </div>
+                        <div class="mdl-card__actions">
+                            <a href="/article/articleDetail/<%=passages[i].articleId%>" class="mdl-button">阅读全文</a>
+                        </div>
+                    </div>
                 </section>
                 <%}%>
             </div>
@@ -231,42 +222,42 @@
 <script src="/js/dropload.min.js"></script>
 </body>
 <script type="text/javascript">
-  $(document).ready(function(){
-      $("#search").click(function () {
-              console.log("点击成功");
-              var searchContent = $("#waterfall-exp").val();
-              if (searchContent !== "") {
-                  $('#searchAmount').empty();
-                  $(".passageList").empty();
-                  $.ajax({
-                      type: 'GET',
-                      url: 'http://127.0.0.1:3000/article/articleResult?searchContent=' + searchContent,
-                      dataType: 'json',
-                      success: function (passages) {
-                          console.log(passages);
-                          var arrLen = passages.length;
-                          console.log(arrLen);
-                          var result = "";
-                          if (arrLen > 0) {
-                              for (var i = 0; i < arrLen; i++) {
-                                  result += '<section class="section--center mdl-grid mdl-grid--no-spacing mdl-cell--12-col mdl-shadow--2dp opacity">' +
-                                      '<div class="mdl-card mdl-cell mdl-cell--12-col">' +
-                                      '<div class="mdl-card__supporting-text">' +
-                                      '<h4>' + passages[i].articleTitle + '</h4>' + ' 作者：' + passages[i].articleAuthor + '|' + passages[i].articleWriteDate +' | 标签：'+passages[i].tags+
-                                      '</div>' +
-                                      '<div class="mdl-card__actions">' +
-                                      ' <a href="/article/articleDetail/' + passages[i].articleId + '" class="mdl-button">阅读全文</a>' +
-                                      '</div>' +
-                                      '</div>' + '</section>'
-                              }
-                          }
-                          $('.passageList').append(result);
-                          $('#searchAmount').text("一共查询到" + arrLen + "条结果");
-                      }
+    $(document).ready(function(){
+        $("#search").click(function () {
+            console.log("点击成功");
+            var searchContent = $("#waterfall-exp").val();
+            if (searchContent !== "") {
+                $('#searchAmount').empty();
+                $(".passageList").empty();
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://127.0.0.1:3000/article/articleResult?searchContent=' + searchContent,
+                    dataType: 'json',
+                    success: function (passages) {
+                        console.log(passages);
+                        var arrLen = passages.length;
+                        console.log(arrLen);
+                        var result = "";
+                        if (arrLen > 0) {
+                            for (var i = 0; i < arrLen; i++) {
+                                result += '<section class="section--center mdl-grid mdl-grid--no-spacing mdl-cell--12-col mdl-shadow--2dp opacity">' +
+                                    '<div class="mdl-card mdl-cell mdl-cell--12-col">' +
+                                    '<div class="mdl-card__supporting-text">' +
+                                    '<h4>' + passages[i].articleTitle + '</h4>' + ' 作者：' + passages[i].articleAuthor + '|' + passages[i].articleWriteDate +' | 标签：'+passages[i].tags+
+                                    '</div>' +
+                                    '<div class="mdl-card__actions">' +
+                                    ' <a href="/article/articleDetail/' + passages[i].articleId + '" class="mdl-button">阅读全文</a>' +
+                                    '</div>' +
+                                    '</div>' + '</section>'
+                            }
+                        }
+                        $('.passageList').append(result);
+                        $('#searchAmount').text("一共查询到" + arrLen + "条结果");
+                    }
 
-                  })
-              }
-      })
-  })
+                })
+            }
+        })
+    })
 </script>
 </html>
