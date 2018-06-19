@@ -122,7 +122,7 @@
                 <div class="mdl-card mdl-cell mdl-cell--12-col">
                 <div class="mdl-card__supporting-text">
                 <h4><%=passages[i].articleTitle%></h4>
-                作者：<%=passages[i].author%> | <%=passages[i].articleWriteDate%>
+                作者：<%=passages[i].author%> | <%=passages[i].articleWriteDate%> | 标签：<%=passages[i].tags%>
                 </div>
                 <div class="mdl-card__actions">
                 <a href="/article/articleDetail/<%=passages[i].articleId%>" class="mdl-button">阅读全文</a>
@@ -252,7 +252,7 @@
                                   result += '<section class="section--center mdl-grid mdl-grid--no-spacing mdl-cell--12-col mdl-shadow--2dp opacity">' +
                                       '<div class="mdl-card mdl-cell mdl-cell--12-col">' +
                                       '<div class="mdl-card__supporting-text">' +
-                                      '<h4>' + passages[i].articleTitle + '</h4>' + ' 作者：' + passages[i].articleAuthor + '|' + passages[i].articleWriteDate +
+                                      '<h4>' + passages[i].articleTitle + '</h4>' + ' 作者：' + passages[i].articleAuthor + '|' + passages[i].articleWriteDate +' | 标签：'+passages[i].tags+
                                       '</div>' +
                                       '<div class="mdl-card__actions">' +
                                       ' <a href="/article/articleDetail/' + passages[i].articleId + '" class="mdl-button">阅读全文</a>' +

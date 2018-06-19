@@ -2,6 +2,7 @@ var express = require('express');
 var dbConfig=require('../db/DBConfig');
 var user=require('../db/usersql');
 var mysql=require('mysql');
+var articleSQL = require('../db/articlesql');
 var session = require('express-session');
 var client=mysql.createConnection(dbConfig.mysql);
 var router = express.Router();
@@ -55,7 +56,16 @@ router.get('/loginPage',function (req,res) {
     res.render("login.ejs",null);
 })
 router.get('/logout',function (req,res) {
-    res.render("mdindex.ejs",null);
+    var fourArticles;
+    client.query(articleSQL.queryFour,function (err,results) {
+        if(err)
+            throw err;
+        else{
+            fourArticles = results;
+            console.log(fourArticles);
+            res.render('mdindex.ejs',{fourArticles:fourArticles});
+        }
+    })
 })
 router.post('/login',function(req,res){
     var para =req.body;

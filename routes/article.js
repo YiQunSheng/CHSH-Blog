@@ -35,14 +35,15 @@ router.get("/getAll",function (req,res) {
     }else{
         var param=req.query ||req.params;
     }
-    console.log(param);
+    // console.log(param);
     var pageSize=parseInt(param.size);
-    var pageNo=(parseInt(param.page)-1)*pageSize+1;
+    var pageNo=(parseInt(param.page)-1)*pageSize;
     client.query(articleSQL.queryAllLimit,[pageNo,pageSize],function (err,result) {
         if(err)
             throw err;
         else{
             //设置跨域访问
+            console.log(result);
             res.set("Access-Control-Allow-Origin","*");
             res.json(result);
         }
@@ -97,7 +98,8 @@ router.post('/submitArticle', function (req, res) {
     var author = para.author;
     var content = para.content;
     var date = para.writeDate;
-    client.query(articleSQL.insert, [title, author, content, date], function (err, results) {
+    var tags = para.tags;
+    client.query(articleSQL.insert, [title, author, content, date, tags], function (err, results) {
         if (err) {
             // res.send("submit article failed");
             console.log("存储数据库失败");
