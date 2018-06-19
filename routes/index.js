@@ -15,7 +15,16 @@ router.get('/', function(req, res, next) {
         else{
             fourArticles = results;
             console.log(fourArticles);
-            res.render('mdindex.ejs',{fourArticles:fourArticles});
+
+            client.query(articleSQL.queryTags,function (err,results2) {
+                if(err)
+                    throw err;
+                else{
+                    var tagsInfo = results2;
+                    console.log(tagsInfo)
+                    res.render('mdindex.ejs',{fourArticles:fourArticles,tags:tagsInfo});
+                }
+            })
         }
     })
 
@@ -43,7 +52,7 @@ router.get('/page',function(req,res){
     res.render('pageTest.ejs', null);
 })
 router.get('/aboutUS',function(req,res){
-    res.render('aboutUs.ejs', null);
+    res.render('pageTest.ejs', null);
 })
 router.get('/mdl',function (req,res) {
     res.redirect('http://www.getmdl.io')

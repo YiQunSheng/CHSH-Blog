@@ -225,7 +225,10 @@
                     </div>
                     <span class="mdl-chip">
                         <span class="mdl-chip__text">Basic Chip（2）</span></span>
-                    <%-%>
+                        <%for(var i=0;i<tags.length;i++){%>
+                    <span class="mdl-chip">
+                        <span class="mdl-chip__text"><%=tags[i].tags%>(<%=tags[i].count%>)</span></span>
+                    <%}%>
                 </section>
             </div>
             <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-phone">
