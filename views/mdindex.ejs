@@ -136,11 +136,11 @@
         <!--正文部分-->
         <div class="mdl-grid">
             <div class="mdl-cell mdl-cell--9-col">
-                <!-- Wide card with share menu button -->
+                    <!-- 欢迎卡片 -->
                 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-cell--12-col mdl-shadow--2dp">
                     <div class="recommeng-card mdl-card mdl-shadow--2dp">
                         <div class="mdl-card__title">
-                            <h2 class="mdl-card__title-text">欢迎来到CHSH的博客</h2>
+                            <h2 class="mdl-card__title-text" style="font-size: 48px;font-family: 'Arial Black'">欢迎来到CHSH的博客</h2>
                         </div>
                         <div class="mdl-card__supporting-text">
                             在这里，您可以了解JS知识，学习制作Web的技能
@@ -150,33 +150,20 @@
                                 探索更多...
                             </a>
                         </div>
-                        <div class="mdl-card__menu">
-                            <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-                                <i class="material-icons">share</i>
-                            </button>
-                        </div>
                     </div>
                 </section>
 
+                    <!--文章推荐-->
                 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-cell--12-col mdl-shadow--2dp">
                     <div class="mdl-card mdl-cell mdl-cell--12-col">
                         <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
                             <h4 class="mdl-cell mdl-cell--12-col">文章推荐</h4>
-
+                            <%for (var i=0;i<fourArticles.length;i++){%>
                             <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-                                <h5>JavaScript学习</h5>
-                                盛轶群 wrote on 2018-6-11  <a href="#">proident minim</a>.
+                                <h5><%=fourArticles[i].articleTitle%></h5>
+                                作者：<%=fourArticles[i].articleAuthor%> wrote on <%=fourArticles[i].articleWriteDate%><a href="/article/articleDetail/<%=fourArticles[i].articleId%>" class="mdl-button">learn more</a>
                             </div>
-
-                            <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-                                <h5>JavaScript学习</h5>
-                                盛轶群 wrote on 2018-6-11  <a href="#">proident minim</a>.
-                            </div>
-
-                            <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-                                <h5>JavaScript学习</h5>
-                                盛轶群 wrote on 2018-6-11  <a href="#">proident minim</a>.
-                            </div>
+                            <%}%>
                         </div>
                         <div class="mdl-card__actions">
                             <a href="/article/articlePage" class="mdl-button">探索更多...</a>
@@ -234,20 +221,20 @@
                 </section>
             </div>
             <!--下方两个圆圈-->
-            <section class="section--footer mdl-color--white mdl-grid">
+            <section class="section--footer mdl-color--white mdl-grid" style="width: 100%">
                 <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
                     <div class="section__circle-container__circle mdl-color--accent section__circle--big"></div>
                 </div>
                 <div class="section__text mdl-cell mdl-cell--4-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-                    <h5>Lorem ipsum dolor sit amet</h5>
-                    Qui sint ut et qui nisi cupidatat. Reprehenderit nostrud proident officia exercitation anim et pariatur ex.
+                    <h5>SYQ</h5>
+                    USE MDL AND EXPRESS TO WRITE BLOGS
                 </div>
                 <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
                     <div class="section__circle-container__circle mdl-color--accent section__circle--big"></div>
                 </div>
                 <div class="section__text mdl-cell mdl-cell--4-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-                    <h5>Lorem ipsum dolor sit amet</h5>
-                    Qui sint ut et qui nisi cupidatat. Reprehenderit nostrud proident officia exercitation anim et pariatur ex.
+                    <h5>CXY</h5>
+                    USE MDL AND EXPRESS TO WRITE BLOGS
                 </div>
             </section>
         </div>

@@ -8,7 +8,17 @@ var client=mysql.createConnection(dbConfig.mysql);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('mdindex.ejs');
+    var fourArticles;
+    client.query(articleSQL.queryFour,function (err,results) {
+        if(err)
+            throw err;
+        else{
+            fourArticles = results;
+            console.log(fourArticles);
+            res.render('mdindex.ejs',{fourArticles:fourArticles});
+        }
+    })
+
 });
 // router.get('/reg', function(req, res, next) {
 //   res.render('reg', { title: 'Register' });
