@@ -106,14 +106,14 @@ router.post('/submitArticle', function (req, res) {
             console.log(err.message);
         }
         else {
-            console.log("存储article成功")
+            console.log("存储article成功");
             // res.send("ok!");
             res.redirect('/');
         }
     })
     // res.send("hello");
     //
-})
+});
 //返回所有文章的json
 router.post('/getPage', function (req, res) {
     var page = parseInt(req.query.page);
@@ -179,7 +179,7 @@ router.get('/tagSearch',function(req,res){
         var param=req.query ||req.params;
     }
     var searchCondition=param.q;
-    console.log("tag 参数是=========》"+searchCondition)
+    console.log("tag 参数是=========》"+searchCondition);
     client.query(articleSQL.queryArticleByTag,[searchCondition],function (err,result) {
         if(err)
             throw err;

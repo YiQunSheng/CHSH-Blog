@@ -8,6 +8,8 @@ var ArticleSQL = {
     queryAllLimit:'SELECT * FROM  article order by articleWriteDate desc limit ?,?',
     queryArticleByName:'SELECT * FROM article where articleTitle LIKE ?',
     queryTags:'select tags,count(*) as count from article group by tags',
-    queryArticleByTag:'SELECT * FROM article where tags =?'
+    queryArticleByTag:'SELECT * FROM article where tags =?',
+    queryTagByArticleId:'SELECT tags FROM article where articleId=?',
+    queryArticleTitleByArticleId:'SELECT articleTitle From article where articleId=?'
 };
 module.exports = ArticleSQL;
