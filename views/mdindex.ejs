@@ -110,6 +110,12 @@
             padding: 15px;
             background-color: white;
         }
+        .mdl-chip >a{
+            text-decoration: none;
+            font-size: 13px;
+            font-family: "Roboto","Helvetica","Arial",sans-serif;
+            color: black;
+        }
     </style>
 </head>
 <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
@@ -224,10 +230,10 @@
                         <h2 class="mdl-card__title-text">标签</h2>
                     </div>
                     <span class="mdl-chip">
-                        <span class="mdl-chip__text">Basic Chip（2）</span></span>
+                        <a class="mdl-chip__text">Basic Chip（2）</a></span>
                         <%for(var i=0;i<tags.length;i++){%>
                     <span class="mdl-chip">
-                        <span class="mdl-chip__text"><%=tags[i].tags%>(<%=tags[i].count%>)</span></span>
+                        <a class="mdl-chip__text" href="/article/tagSearch?q=<%=tags[i].tags%>"><%=tags[i].tags%>(<%=tags[i].count%>)</a></span>
                     <%}%>
                 </section>
             </div>

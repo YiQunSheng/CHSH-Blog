@@ -172,6 +172,24 @@ router.get('/articleSearch',function(req,res){
     })
 
 });
+router.get('/tagSearch',function(req,res){
+    if(req.method=="POST"){
+        var param=req.body;
+    }else{
+        var param=req.query ||req.params;
+    }
+    var searchCondition=param.q;
+    console.log("tag 参数是=========》"+searchCondition)
+    client.query(articleSQL.queryArticleByTag,[searchCondition],function (err,result) {
+        if(err)
+            throw err;
+        else{
+            console.log(result);
+            res.render('tagSearch.ejs',{passages:result,tagName:searchCondition});
+        }
+    })
+
+});
 //返回查询结果
 router.get('/articleResult',function(req,res){
 
