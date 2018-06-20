@@ -109,6 +109,7 @@
         .tagsSection{
             padding: 15px;
             background-color: white;
+            height: auto;
         }
         .mdl-chip >a{
             text-decoration: none;
@@ -116,9 +117,29 @@
             font-family: "Roboto","Helvetica","Arial",sans-serif;
             color: black;
         }
+
+        .section__circle--big syq{
+            background: url('/images/syq.jpeg') center/cover;
+        }
+        .section__circle--big cxy{
+            background: url('/images/cxy.jpeg') center/cover;
+        }
+        .syq {
+            color: #fff;
+            height: 1000px;
+            background: url('/images/syq.jpeg') center/cover;
+        }
+        .mdl-card__supporting-text{
+            height: 400px;
+        }
+        .cxy{
+            color: #fff;
+            height: 1000px;
+            background: url('/images/cxy.jpeg') center/cover;
+        }
     </style>
 </head>
-<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+<body class="chsh mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header ">
     <!--导航栏-->
     <header class="mdl-layout__header mdl-layout__header--waterfall header-big ">
@@ -193,7 +214,7 @@
                 </section>
             </div>
             <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-phone">
-                <section class="section--center mdl-grid mdl-grid--no-spacing mdl-cell--12-col mdl-shadow--2dp">
+                <section class="section--center mdl-grid mdl-grid--no-spacing mdl-cell--12-col mdl-shadow--2dp mdl-layout--large-screen-only">
                     <div class="demo-card-event mdl-card mdl-shadow--2dp">
                         <div class="mdl-card__title mdl-card--expand">
                             <ul class="demo-list-icon mdl-list">
@@ -225,12 +246,22 @@
                         </div>
                     </div>
                 </section>
-                <section class="section--center mdl-grid mdl-grid--no-spacing mdl-cell--12-col mdl-shadow--2dp tagsSection" >
+                <section class="section--center mdl-grid mdl-grid--no-spacing mdl-cell--12-col mdl-shadow--2dp tagsSection mdl-layout--large-screen-only">
                     <div class="mdl-card__title" style="width: 100%">
                         <h2 class="mdl-card__title-text">标签</h2>
                     </div>
                     <span class="mdl-chip">
-                        <a class="mdl-chip__text">Basic Chip（2）</a></span>
+                        <a class="mdl-chip__text">娱乐（2）</a></span>
+                    <span class="mdl-chip">
+                        <a class="mdl-chip__text">Web技术交流（2）</a></span>
+                    <span class="mdl-chip">
+                        <a class="mdl-chip__text">搞笑（2）</a></span>
+                    <span class="mdl-chip">
+                        <a class="mdl-chip__text">世界杯（2）</a></span>
+                    <span class="mdl-chip">
+                        <a class="mdl-chip__text">日语翻译（2）</a></span>
+                    <span class="mdl-chip">
+                        <a class="mdl-chip__text">IOS开发（2）</a></span>
                         <%for(var i=0;i<tags.length;i++){%>
                     <span class="mdl-chip">
                         <a class="mdl-chip__text" href="/article/tagSearch?q=<%=tags[i].tags%>"><%=tags[i].tags%>(<%=tags[i].count%>)</a></span>
@@ -243,7 +274,7 @@
             <!--下方两个圆圈-->
             <section class="section--footer mdl-color--white mdl-grid" style="width: 100%">
                 <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
-                    <div class="section__circle-container__circle mdl-color--primary section__circle--big">
+                    <div class="section__circle-container__circle mdl-color--primary section__circle--big syq">
                     </div>
                 </div>
                 <div class="section__text mdl-cell mdl-cell--4-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
@@ -251,7 +282,7 @@
                     USE MDL AND EXPRESS TO WRITE BLOGS
                 </div>
                 <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
-                    <div class="section__circle-container__circle mdl-color--primary section__circle--big"></div>
+                    <div class="section__circle-container__circle mdl-color--primary section__circle--big cxy"></div>
                 </div>
                 <div class="section__text mdl-cell mdl-cell--4-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
                     <h5>CXY</h5>

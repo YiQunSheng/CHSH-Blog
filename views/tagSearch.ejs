@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="/stylesheets/styles.css">
     <link rel="stylesheet" href="/stylesheets/dropload.css">
     <style>
-        #view-source {
+        #more-fab {
             position: fixed;
             display: block;
             right: 0;
@@ -76,18 +76,18 @@
 
     </style>
 </head>
-<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+<body class="chsh mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <!-- 导航栏开始 -->
     <header class="mdl-layout__header mdl-layout__header--waterfall mdl-color--primary">
         <!--为了header大一点设置的header-row-->
-        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row ">
 
         </div>
         <div class="mdl-layout mdl-layout__header-row">
             <h3>CHSH的博客</h3>
         </div>
-        <div class=" mdl-layout__header-row">
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
             <div class="mdl-layout-spacer"></div>
             
         </div>
@@ -105,7 +105,7 @@
         <br>
         <!--<p id="searchAmount">一共查询到条结果</p>-->
         <div class="container passageContent">
-            <h2>标签：<%-tagName%>(<%=passages.length%>)</h2>
+            <h3>标签：<%-tagName%>(<%=passages.length%>)</h3>
             <div class="mdl-grid passageList">
                 <!--card-->
                 <%for (var i=0;i<passages.length;i++){%>
@@ -124,99 +124,24 @@
             </div>
         </div>
         <!-- 下方状态栏结束 -->
-        <footer class="mdl-mega-footer">
-            <div class="mdl-mega-footer--middle-section">
-                <div class="mdl-mega-footer--drop-down-section">
-                    <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
-                    <h1 class="mdl-mega-footer--heading">Features</h1>
-                    <ul class="mdl-mega-footer--link-list">
-                        <li>
-                            <a href="#">About</a>
-                        </li>
-                        <li>
-                            <a href="#">Terms</a>
-                        </li>
-                        <li>
-                            <a href="#">Partners</a>
-                        </li>
-                        <li>
-                            <a href="#">Updates</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="mdl-mega-footer--drop-down-section">
-                    <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
-                    <h1 class="mdl-mega-footer--heading">Details</h1>
-                    <ul class="mdl-mega-footer--link-list">
-                        <li>
-                            <a href="#">Spec</a>
-                        </li>
-                        <li>
-                            <a href="#">Tools</a>
-                        </li>
-                        <li>
-                            <a href="#">Resources</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="mdl-mega-footer--drop-down-section">
-                    <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
-                    <h1 class="mdl-mega-footer--heading">Technology</h1>
-                    <ul class="mdl-mega-footer--link-list">
-                        <li>
-                            <a href="#">How it works</a>
-                        </li>
-                        <li>
-                            <a href="#">Patterns</a>
-                        </li>
-                        <li>
-                            <a href="#">Usage</a>
-                        </li>
-                        <li>
-                            <a href="#">Products</a>
-                        </li>
-                        <li>
-                            <a href="#">Contracts</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="mdl-mega-footer--drop-down-section">
-                    <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
-                    <h1 class="mdl-mega-footer--heading">FAQ</h1>
-                    <ul class="mdl-mega-footer--link-list">
-                        <li>
-                            <a href="#">Questions</a>
-                        </li>
-                        <li>
-                            <a href="#">Answers</a>
-                        </li>
-                        <li>
-                            <a href="#">Contact us</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="mdl-mega-footer--bottom-section">
-                <div class="mdl-logo">
-                    More Information
-                </div>
-                <ul class="mdl-mega-footer--link-list">
-                    <li>
-                        <a href="https://developers.google.com/web/starter-kit/">Web Starter Kit</a>
-                    </li>
-                    <li>
-                        <a href="#">Help</a>
-                    </li>
-                    <li>
-                        <a href="#">Privacy and Terms</a>
-                    </li>
+        <footer class="mdl-mini-footer">
+            <div class="mdl-mini-footer__left-section">
+                <div class="mdl-logo">CHSH'sBlog</div>
+                <ul class="mdl-mini-footer__link-list">
+                    <li><a href="/mdl">We Use Google Material Degisn Lite</a></li>
+                    <li><a href="#">ZUCC-CHSH Group</a></li>
                 </ul>
             </div>
         </footer>
     </main>
 </div>
-<a href="#"  id="view-source"
-   class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">View Source</a>
+<ul class="mdl-menu  mdl-menu--top-right mdl-js-menu mdl-js-ripple-effect" for="more-fab" style="margin-bottom: 10px;">
+    <!--<li class="mdl-menu__item">个人信息</li>-->
+    <a class="mdl-menu__item" href="/users/loginPage" id="login-item" style="color: black">登录</a>
+    <a class="mdl-menu__item" href="/users/logout" id="logout" style="color: black">登出</a>
+    <!--<li class="mdl-menu__item" id="ToTop">返回顶部</li>-->
+</ul>
+<a id="more-fab" class="mdl-button mdl-js-button  mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">未登陆</a>
 <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
 <script src="/js/dropload.min.js"></script>
@@ -257,6 +182,27 @@
 
                 })
             }
+        })
+    })
+</script>
+<script type="text/javascript" src="/js/jquerysession.js"></script>
+<script>
+    $(document).ready(function () {
+        if($.session.get('user')===undefined||$.session.get('role')==='visitor'){
+            $('#submitArticle').remove();
+            $("#more-fab").text("未登陆");
+        }
+        if($.session.get('user')!=undefined){
+            $("#more-fab").text('你好 '+$.session.get('user'));
+            $("#login-item").remove();
+        }
+        $("#ToTop").click(function () {
+            // $('html, body').animate({scrollTop: 0}, 500);
+            scrollTo(0,0)
+            // alert("click")
+        })
+        $("#logout").click(function () {
+            $.session.clear();
         })
     })
 </script>
