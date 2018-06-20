@@ -63,7 +63,16 @@ router.get('/logout',function (req,res) {
         else{
             fourArticles = results;
             console.log(fourArticles);
-            res.render('mdindex.ejs',{fourArticles:fourArticles});
+
+            client.query(articleSQL.queryTags,function (err,results2) {
+                if(err)
+                    throw err;
+                else{
+                    var tagsInfo = results2;
+                    console.log(tagsInfo)
+                    res.render('mdindex.ejs',{fourArticles:fourArticles,tags:tagsInfo});
+                }
+            })
         }
     })
 })

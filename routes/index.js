@@ -52,7 +52,7 @@ router.get('/page',function(req,res){
     res.render('pageTest.ejs', null);
 })
 router.get('/aboutUS',function(req,res){
-    res.render('pageTest.ejs', null);
+    res.render('aboutUs.ejs', null);
 })
 router.get('/mdl',function (req,res) {
     res.redirect('http://www.getmdl.io')
