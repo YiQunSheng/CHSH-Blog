@@ -2,142 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>CHSH'sBlog</title>
-
-
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-pink.min.css">
     <link rel="stylesheet" href="/stylesheets/styles.css">
-    <style>
-        #more-fab {
-            position: fixed;
-            display: block;
-            right: 0;
-            bottom: 0;
-            margin-right: 40px;
-            margin-bottom: 40px;
-            z-index: 900;
-        }
-        .recommeng-card.mdl-card {
-            width: 100%;
-        }
-        .recommeng-card > .mdl-card__title {
-            color: #fff;
-            height: 250px;
-            background: url('/images/banner.jpg') center / cover;
-        }
-        .recommeng-card > .mdl-card__menu {
-            color: #fff;
-        }
-        .demo-list-icon {
-            width: 300px;
-        }
-        .contact_facebook{
-            font-size: 14px;
-            color: #fff;
-            margin-right: 1em;
-            text-transform: uppercase;
-            display:inline-block;
-            background:#337ab7;
-            padding:1.2em 1em;
-            margin-bottom:0.5em;
-            list-style: none;
-            cursor: pointer;
-            -webkit-transition: all 0.2s ease;
-            -moz-transition: all 0.2s ease;
-            -o-transition: all 0.2s ease;
-            -ms-transition: all 0.2s ease;
-            transition: all 0.2s ease;
-        }
-        .contact_facebook:hover{
-            background:#29689E;
-        }
-        .contact_weibo{
-            font-size: 14px;
-            color: #fff;
-            margin-right: 1em;
-            text-transform: uppercase;
-            display:inline-block;
-            background:#dd4b39;
-            padding:1.2em 1em;
-            margin-bottom:0.5em;
-            list-style: none;
-            cursor: pointer;
-            -webkit-transition: all 0.2s ease;
-            -moz-transition: all 0.2s ease;
-            -o-transition: all 0.2s ease;
-            -ms-transition: all 0.2s ease;
-            transition: all 0.2s ease;
-        }
-        .contact_weibo:hover{
-            background:#DC3E2A;
-        }
-        .contact_wechat{
-            font-size: 14px;
-            color: #fff;
-            margin-right: 1em;
-            text-transform: uppercase;
-            display:inline-block;
-            background:#ea4c89;
-            padding:1.2em 1em;
-            margin-bottom:0.5em;
-            list-style: none;
-            cursor: pointer;
-            -webkit-transition: all 0.2s ease;
-            -moz-transition: all 0.2s ease;
-            -o-transition: all 0.2s ease;
-            -ms-transition: all 0.2s ease;
-            transition: all 0.2s ease;
-        }
-        .contact_wechat:hover{
-            background: #E03979;
-        }
-        a{
-            text-decoration: none;
-            color: #fff;
-        }
-        h3{
-            line-height: 8px;
-        }
-        .mdl-chip{
-            margin: 5px;
-        }
-        .tagsSection{
-            padding: 15px;
-            background-color: white;
-            height: auto;
-        }
-        .mdl-chip >a{
-            text-decoration: none;
-            font-size: 13px;
-            font-family: "Roboto","Helvetica","Arial",sans-serif;
-            color: black;
-        }
-
-        .section__circle--big syq{
-            background: url('/images/syq.jpeg') center/cover;
-        }
-        .section__circle--big cxy{
-            background: url('/images/cxy.jpeg') center/cover;
-        }
-        .syq {
-            color: #fff;
-            height: 1000px;
-            background: url('/images/syq.jpeg') center/cover;
-        }
-        .mdl-card__supporting-text{
-            height: 400px;
-        }
-        .cxy{
-            color: #fff;
-            height: 1000px;
-            background: url('/images/cxy.jpeg') center/cover;
-        }
-    </style>
+    <link rel="stylesheet" href="/stylesheets/indexCSS.css">
 </head>
 <body class="chsh mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header ">
@@ -157,6 +28,15 @@
             <a href="/page" class="mdl-layout__tab">推荐</a>
             <a href="/aboutUs" class="mdl-layout__tab">关于我们</a>
             <a href="/article/writeArticle" id="submitArticle" class="mdl-layout__tab">发布文章</a>
+        </div>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Title</span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Link</a>
+            </nav>
         </div>
     </header>
     <main class="mdl-layout__content">
@@ -204,12 +84,30 @@
                     <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
                         <div class="mdl-card__supporting-text">
                             <h4>Always On The Road</h4>
-                             JS学习的的道路——了解我们如何制作个博客的
+                             JS学习的道路——了解我们如何制作个博客的
                         </div>
                         <div class="mdl-card__actions">
                             <a href="#" class="mdl-button">Learn our experience</a>
                         </div>
                     </div>
+
+
+                </section>
+                <section class="section--center mdl-grid mdl-grid--no-spacing mdl-cell--12-col mdl-shadow--2dp">
+                    <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--pink-100 mdl-color-text--white">
+                        <!--<i class="material-icons">play_circle_filled</i>-->
+                        <h1>MDL</h1>
+                    </header>
+                    <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+                        <div class="mdl-card__supporting-text">
+                            <h4>HOW to use MDL？</h4>
+                            MDL学习的道路——如何用MDL制作该博客？
+                        </div>
+                        <div class="mdl-card__actions">
+                            <a href="#" class="mdl-button">Learn our experience</a>
+                        </div>
+                    </div>
+
 
                 </section>
             </div>

@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="/stylesheets/styles.css">
     <link rel="stylesheet" href="/stylesheets/dropload.css">
     <style>
-        #more-fab {
+        #view-source {
             position: fixed;
             display: block;
             right: 0;
@@ -151,7 +151,6 @@
     <!--<li class="mdl-menu__item" id="ToTop">返回顶部</li>-->
 </ul>
 <a id="more-fab" class="mdl-button mdl-js-button  mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">未登陆</a>
-
 <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
 <script src="/js/dropload.min.js"></script>
@@ -194,27 +193,5 @@
               }
       })
   })
-</script>
-<script type="text/javascript" src="/js/jquerysession.js"></script>
-
-<script>
-    $(document).ready(function () {
-        if($.session.get('user')===undefined||$.session.get('role')==='visitor'){
-            $('#submitArticle').remove();
-            $("#more-fab").text("未登陆");
-        }
-        if($.session.get('user')!=undefined){
-            $("#more-fab").text('你好 '+$.session.get('user'));
-            $("#login-item").remove();
-        }
-        $("#ToTop").click(function () {
-            // $('html, body').animate({scrollTop: 0}, 500);
-            scrollTo(0,0)
-            // alert("click")
-        })
-        $("#logout").click(function () {
-            $.session.clear();
-        })
-    })
 </script>
 </html>

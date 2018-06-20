@@ -47,18 +47,14 @@ html, body {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 .chsh .mdl-card > * {
   height: auto;
 }
 .chsh .mdl-card .mdl-card__supporting-text {
   margin: 40px;
-  -webkit-flex-grow: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  flex-grow: 1;
   padding: 0;
   color: inherit;
   width: calc(100% - 80px);
@@ -102,15 +98,9 @@ html, body {
   max-width: 620px;
 }
 .chsh section > header{
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
 .chsh section > .section__play-btn {
   min-height: 200px;
@@ -125,25 +115,12 @@ html, body {
   right: 8px;
 }
 .chsh section .section__circle {
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-justify-content: flex-start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-flex-grow: 0;
-      -ms-flex-positive: 0;
-          flex-grow: 0;
-  -webkit-flex-shrink: 1;
-      -ms-flex-negative: 1;
-          flex-shrink: 1;
+  flex-shrink: 1;
 }
 .chsh section .section__text {
-          flex-grow: 1;
-          flex-shrink: 0;
+  flex-grow: 1;
+  flex-shrink: 0;
   padding-top: 8px;
 }
 .chsh section .section__text h5 {
@@ -173,7 +150,7 @@ html, body {
   margin: 8px 16px;
 }
 .chsh section.section--footer {
-  padding: 64px 0;
+  padding: 64px auto;
   margin: 0 -8px -8px -8px;
 }
 .chsh section.section--center .section__text:not(:last-child) {
@@ -199,9 +176,6 @@ html, body {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
 }
 .chsh .toc h4 {
   font-size: 0.9rem;
