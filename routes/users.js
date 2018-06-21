@@ -26,7 +26,7 @@ router.get('/getall',function(req,res) {
         res.render("testMysql.ejs",{table:result});
 
     });
-})
+});
 
 router.post('/reg',function(req,res,next){
     var para = req.body;
@@ -51,10 +51,10 @@ router.post('/reg',function(req,res,next){
 });
 router.get('/registerPage',function (req,res) {
     res.render("register.ejs",null);
-})
+});
 router.get('/loginPage',function (req,res) {
     res.render("login.ejs",null);
-})
+});
 router.get('/logout',function (req,res) {
     var fourArticles;
     client.query(articleSQL.queryFour,function (err,results) {
@@ -69,13 +69,13 @@ router.get('/logout',function (req,res) {
                     throw err;
                 else{
                     var tagsInfo = results2;
-                    console.log(tagsInfo)
+                    console.log(tagsInfo);
                     res.render('mdindex.ejs',{fourArticles:fourArticles,tags:tagsInfo});
                 }
             })
         }
     })
-})
+});
 router.post('/login',function(req,res){
     var para =req.body;
     console.log(para);
@@ -98,6 +98,6 @@ router.post('/login',function(req,res){
             }
         }
     })
-})
+});
 
 module.exports = router;

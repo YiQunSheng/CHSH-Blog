@@ -49,7 +49,7 @@ router.get("/getAll",function (req,res) {
         }
     })
 
-})
+});
 router.get('/articleDetail/:articleId',function (req,res) {
     var articleId=req.params.articleId;
     client.query(articleSQL.queryByArticleId,[articleId],function(err,result){
