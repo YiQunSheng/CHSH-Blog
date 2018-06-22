@@ -23,8 +23,9 @@
             color: #fff;
         }
         .demo-card-image.mdl-card {
-            width: 300px;
-            height: 450px;
+            /*width: 300px;*/
+            width: auto;
+            height: auto;
 
         }
         .demo-card-image > .mdl-card__actions {
@@ -52,7 +53,7 @@
         }
         .movieImage{
             width: auto;
-            height: auto;
+            height: 410px;
             padding: 0;
         }
         #more-fab {
@@ -147,7 +148,7 @@
                         console.log(data);
                         $("#movie-grid").empty();
                         data.subjects.forEach(function (item) {
-                            $("#movie-grid").append('<div class="mdl-grid mdl-grid--no-spacing mdl-cell--3-col mdl-cell--2-col-tablet movieContent"><section class="demo-card-image mdl-card mdl-shadow--2dp  mdl-shadow--2dp">'
+                            $("#movie-grid").append('<div class="mdl-grid mdl-grid--no-spacing mdl-cell--3-col mdl-cell--2-tablet movieContent"><section class="demo-card-image mdl-card mdl-shadow--2dp  mdl-shadow--2dp">'
                                 +'<a href="http://127.0.0.1:3000/movieDetail/'+item.id+ '">'+'<img class="mdl-card__title mdl-card--expand movieImage" src='+item.images.small+'>'+'</a>'+
                                     '<div class="mdl-card__actions">'+
                                     '<span class="demo-card-image__filename">'+ item.title+'| 豆瓣评分'+item.rating.average+'</span>'+
@@ -156,14 +157,6 @@
                                     '</div>'
                             )
                         })
-//        $("#title").val(data.title);
-//        $("#author").val(data.author[0]);
-//        $("#publisher").val(data.publisher);
-//        $("#pages").val(data.pages);
-//        $("#binding").val(data.binding);
-//        $("#summary").val(data.summary);
-//        $("#pubdate").val(data.pubdate);
-//        $("#image").attr("src",data.images.medium);
                     }
                 });
 

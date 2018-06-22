@@ -91,22 +91,7 @@
     <main class="mdl-layout__content">
         <div class="container passageContent">
         <div class="mdl-grid passageList">
-             <!--card-->
-            <!--<%for (var i=0;i<passages.length;i++){%>-->
-            <!--<section class="section&#45;&#45;center mdl-grid mdl-grid&#45;&#45;no-spacing mdl-cell&#45;&#45;12-col mdl-shadow&#45;&#45;2dp">-->
-                <!--<div class="mdl-card mdl-cell mdl-cell&#45;&#45;12-col">-->
-                    <!--<div class="mdl-card__supporting-text">-->
-                        <!--<h4><%=passages[i].articleTitle%></h4>-->
-                        <!--作者：<%=passages[i].articleAuthor%> | <%=passages[i].articleWriteDate%> | 标签：<%=passages[i].articleWriteDate%>-->
-                    <!--</div>-->
-                    <!--<div class="mdl-card__actions">-->
-                        <!--<a href="/article/articleDetail/<%=passages[i].articleId%>" class="mdl-button">阅读全文</a>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--&lt;!&ndash; 菜单 &ndash;&gt;-->
 
-            <!--</section>-->
-            <!--<%}%>-->
         </div>
         </div>
         <!-- 下方状态栏结束 -->
@@ -208,11 +193,6 @@
             $("#more-fab").text('你好 '+$.session.get('user'));
             $("#login-item").remove();
         }
-        $("#ToTop").click(function () {
-            // $('html, body').animate({scrollTop: 0}, 500);
-            scrollTo(0,0)
-            // alert("click")
-        })
         $("#logout").click(function () {
             $.session.clear();
         })
