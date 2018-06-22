@@ -147,7 +147,7 @@
                         console.log(data);
                         $("#movie-grid").empty();
                         data.subjects.forEach(function (item) {
-                            $("#movie-grid").append('<div class="mdl-grid mdl-grid--no-spacing mdl-cell--3-col mdl-cell--2-tablet movieContent"><section class="demo-card-image mdl-card mdl-shadow--2dp  mdl-shadow--2dp">'
+                            $("#movie-grid").append('<div class="mdl-grid mdl-grid--no-spacing mdl-cell--3-col mdl-cell--2-col-tablet movieContent"><section class="demo-card-image mdl-card mdl-shadow--2dp  mdl-shadow--2dp">'
                                 +'<a href="http://127.0.0.1:3000/movieDetail/'+item.id+ '">'+'<img class="mdl-card__title mdl-card--expand movieImage" src='+item.images.small+'>'+'</a>'+
                                     '<div class="mdl-card__actions">'+
                                     '<span class="demo-card-image__filename">'+ item.title+'| 豆瓣评分'+item.rating.average+'</span>'+

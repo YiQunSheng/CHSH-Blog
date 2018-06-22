@@ -11,6 +11,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
+
 router.get('/getall',function(req,res) {
     client.query(user.queryAll,function(err,result){
         if(err){
@@ -18,14 +19,32 @@ router.get('/getall',function(req,res) {
 
             return;
         }
-        // var table = '<table><th>id</th><th>name</th><th>pwd</th>';
-        // for(var i=0;i<result.length;i++){
-        //    table= table.concat('<tr>','<td>',result[i].userid,'</td>','<td>',result[i].username,'</td>','<td>',result[i].password,'</td>','</tr>')
-        // }
-        // res.send(result);
         res.render("testMysql.ejs",{table:result});
-
     });
+});
+
+router.post('/login',function(req,res){
+    var para =req.body;
+    console.log(para);
+    client.query(user.getUserByOpenid,[para.userid],function(err,results){
+        if(err){
+            throw err;
+        }
+        else {
+            if(results.length===1)
+            {
+                if(results[0].password===para.pwd){
+                    console.log(results[0]);
+                    res.json(results[0]);
+                }
+                else
+                    res.send("Wrong Password");
+            }
+            else {
+                res.send("user not found")
+            }
+        }
+    })
 });
 
 router.post('/reg',function(req,res,next){
@@ -52,6 +71,7 @@ router.post('/reg',function(req,res,next){
 router.get('/registerPage',function (req,res) {
     res.render("register.ejs",null);
 });
+
 router.get('/loginPage',function (req,res) {
     res.render("login.ejs",null);
 });
@@ -76,28 +96,6 @@ router.get('/logout',function (req,res) {
         }
     })
 });
-router.post('/login',function(req,res){
-    var para =req.body;
-    console.log(para);
-    client.query(user.getUserByOpenid,[para.userid],function(err,results){
-        if(err){
-            throw err;
-        }
-        else {
-            if(results.length===1)
-            {
-                if(results[0].password===para.pwd){
-                    console.log(results[0]);
-                    res.json(results[0]);
-                }
-                else
-                    res.send("Wrong Password");
-            }
-            else {
-                res.send("user not found")
-            }
-        }
-    })
-});
+
 
 module.exports = router;

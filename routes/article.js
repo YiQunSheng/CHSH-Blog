@@ -81,10 +81,6 @@ router.get('/articleDetail/:articleId',function (req,res) {
                     },500);
                 }
             ],function (err, results,newResults) {
-
-                // console.log("评论长度为"+newResults[0].length);
-                //   res.render("index.html", {list: results, list2: newResults});
-                // console.log(newResults.length);
                 res.render('articledetail.ejs',{articleDetail:result[0],articleComment:results,articleReply:newResults});
             })
         })
@@ -111,8 +107,6 @@ router.post('/submitArticle', function (req, res) {
             res.redirect('/');
         }
     })
-    // res.send("hello");
-    //
 });
 //返回所有文章的json
 router.post('/getPage', function (req, res) {
