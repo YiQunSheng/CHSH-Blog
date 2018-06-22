@@ -21,7 +21,7 @@ router.get('/', function(req, res, next) {
                     throw err;
                 else{
                     var tagsInfo = results2;
-                    console.log(tagsInfo)
+                    console.log(tagsInfo);
                     res.render('mdindex.ejs',{fourArticles:fourArticles,tags:tagsInfo});
                 }
             })
@@ -47,15 +47,19 @@ router.get('/reg', function(req, res, next) {
 //render 才能返回一个ejs文件，如果是send则返回文字。 第一个参数是文件名，第二个是ejs渲染的参数。
 router.get('/testhtml',function(req,res){
 res.render('testhtml', { title: 'Express' });
-})
+});
 router.get('/page',function(req,res){
     res.render('pageTest.ejs', null);
-})
+});
+router.get('/movieDetail/:movieId',function (req,res) {
+     var movieId=req.params.movieId;
+      res.render('movieDetail.ejs',{movieId:movieId});
+});
 router.get('/aboutUS',function(req,res){
     res.render('aboutUs.ejs', null);
-})
+});
 router.get('/mdl',function (req,res) {
     res.redirect('http://www.getmdl.io')
-})
+});
 //导出这个路由并在app.js中通过app.use('/', routes)加载
 module.exports = router;

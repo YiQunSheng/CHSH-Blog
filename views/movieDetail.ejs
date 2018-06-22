@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>CHSH'sBlog</title>
+
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-pink.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <style>
+        .recommeng-card > .mdl-card__title {
+            color: #fff;
+            height: 250px;
+            background: url('/images/banner.jpg') center / cover;
+        }
+        .recommeng-card > .mdl-card__menu {
+            color: #fff;
+        }
+        .demo-card-image.mdl-card {
+            width: 300px;
+            height: 450px;
+
+        }
+        .demo-card-image > .mdl-card__actions {
+            height: 52px;
+            padding: 16px;
+            /*background: rgba(0, 0, 0, 0.2);*/
+        }
+        .demo-card-image__filename {
+            /*color: #fff;*/
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .demo-list-action {
+            width: 300px;
+        }
+        .movieContent{
+            margin:10px;
+        }
+        .movieInformation{
+             margin-bottom: 20px;
+
+
+         }
+        #movie-grid{
+            margin:10px;
+        }
+        .demo-card-image.mdl-card{
+            height: 100%;
+            width: 100%;
+        }
+        a{
+            text-decoration: none;
+            color: #fff;
+        }
+        h3{
+            line-height: 10px;
+        }
+        .container{
+            padding: 10px;
+        }
+        .movieImage{
+            width: auto;
+            height: auto;
+            padding: 0;
+        }
+        #more-fab {
+            position: fixed;
+            display: block;
+            right: 0;
+            bottom: 0;
+            margin-right: 40px;
+            margin-bottom: 40px;
+            z-index: 900;
+        }
+    </style>
+</head>
+
+<body class="chsh mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <!--导航栏-->
+    <header class="mdl-layout__header mdl-layout__header--waterfall mdl-color--primary">
+        <!--为了header大一点设置的header-row-->
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+
+        </div>
+        <div class="mdl-layout mdl-layout__header-row">
+            <h3>CHSH的博客</h3>
+        </div>
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+        </div>
+        <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
+            <a href="/" class="mdl-layout__tab">主页</a>
+            <a href="/article/articlePage" class="mdl-layout__tab">文章列表</a>
+            <a href="/page" class="mdl-layout__tab is-active">推荐</a>
+            <a href="/aboutUs" class="mdl-layout__tab">关于我们</a>
+            <a href="/article/writeArticle" class="mdl-layout__tab" id="submitArticle">发布文章</a>
+        </div>
+    </header>
+    <main class="mdl-layout__content">
+        <!--正文部分-->
+        <div class="mdl-grid mdl-shadow--2dp" id="movie-grid">
+            <!--显示电影名称及上映时间-->
+            <div class="mdl-cell  mdl-cell--12-col mdl-cell--8-col-tablet movieContent">
+                <h5><span id="movieName">美丽人生&nbsp; </span> <span id="movieRealseTime">(1934)</span></h5>
+            </div>
+           <!--显示电影的海报-->
+            <div class="mdl-cell mdl-grid--no-space mdl-cell--4-col mdl-cell--3-col-tablet">
+                <section class="demo-card-image mdl-card mdl-shadow--2dp">
+                    <img class="mdl-card__title mdl-card--expand movieImage" id="movieImage" src="">
+                </section>
+            </div>
+           <!--显示电影的具体信息-->
+            <div class="mdl-cell  mdl-cell--8-col mdl-cell--5-col-tablet movieInformation">
+                <div class="mdl-cell  mdl-cell--12-col mdl-cell--8-col-tablet">
+                <div class=" mdl-list mdl-shadow--2dp">
+                    <div class="mdl-list__item">
+    <span class="mdl-list__item-primary-content">
+      <!--<i class="material-icons mdl-list__item-avatar">person</i>-->
+        <span>导演：</span>
+      <span id="movieDirector">Bryan Cranston</span>
+    </span>
+                    </div>
+                    <div class="mdl-list__item">
+    <span class="mdl-list__item-primary-content">
+     <span>编剧：</span>
+      <span id="movieWriter">Aaron Paul</span>
+    </span>
+                    </div>
+                    <div class="mdl-list__item">
+    <span class="mdl-list__item-primary-content">
+      <span>主演：</span>
+      <span id="movieCast">Bob Odenkirk</span>
+    </span>
+                    </div>
+                    <div class="mdl-list__item">
+    <span class="mdl-list__item-primary-content">
+      <span>电影类型：</span>
+      <span id="movieType">恐怖</span>
+    </span>
+                    </div>
+                    <div class="mdl-list__item">
+    <span class="mdl-list__item-primary-content">
+      <span>国家：</span>
+      <span id="movieCountry">美国</span>
+    </span>
+                    </div>
+                    <div class="mdl-list__item">
+    <span class="mdl-list__item-primary-content">
+      <span>语言：</span>
+      <span id="movieLanguage">英语</span>
+    </span>
+                    </div>
+                    <div class="mdl-list__item">
+    <span class="mdl-list__item-primary-content">
+      <span>上映日期：</span>
+      <span id="moviePubDate">1994-10-14(美国)</span>
+    </span>
+                    </div>
+                    <div class="mdl-list__item">
+    <span class="mdl-list__item-primary-content">
+      <span>片长：</span>
+      <span id="movieTime">142分钟</span>
+    </span>
+                    </div>
+                    <div class="mdl-list__item">
+    <span class="mdl-list__item-primary-content">
+      <span>又名：</span>
+      <span id="movieAltName">肖声克的救赎</span>
+    </span>
+                    </div>
+
+                </div>
+                </div>
+                <div class="mdl-cell  mdl-cell--12-col mdl-cell--8-col-tablet mdl-shadow--2dp">
+                    <br>
+                    <h5>&nbsp;电影简介</h5>
+                    <p id="movieSummary">　　20世纪40年代末，小有成就的青年银行家安迪（蒂姆·罗宾斯 Tim Robbins 饰）因涉嫌杀害妻子及她的情人而锒铛入狱。在这座名为肖申克的监狱内，希望似乎虚无缥缈，终身监禁的惩罚无疑注定了安迪接下来灰暗绝望的人生。未过多久，安迪尝试接近囚犯中颇有声望的瑞德（摩根·弗里曼 Morgan Freeman 饰），请求对方帮自己搞来小锤子。以此为契机，二人逐渐熟稔，安迪也仿佛在鱼龙混杂、罪恶横生、黑白混淆的牢狱中找到属于自己的求生之道。他利用自身的专业知识，帮助监狱管理层逃税、洗黑钱，同时凭借与瑞德的交往在犯人中间也渐渐受到礼遇。表面看来，他已如瑞德那样对那堵高墙从憎恨转变为处之泰然，但是对自由的渴望仍促使他朝着心中的希望和目标前进。而关于其罪行的真相，似乎更使这一切朝前推进了一步…… </p>
+                </div>
+                </div>
+            </div>
+        <!--页脚部分-->
+        <footer class="mdl-mini-footer">
+            <div class="mdl-mini-footer__left-section">
+                <div class="mdl-logo">CHSH'sBlog</div>
+                <ul class="mdl-mini-footer__link-list">
+                    <li><a href="www.getmdl.io/">We Use Google Material Degisn Lite</a></li>
+                    <li><a href="#">ZUCC-CHSH Group</a></li>
+                </ul>
+            </div>
+        </footer>
+    </main>
+</div>
+<ul class="mdl-menu  mdl-menu--top-right mdl-js-menu mdl-js-ripple-effect" for="more-fab" style="margin-bottom: 10px;">
+    <!--<li class="mdl-menu__item">个人信息</li>-->
+    <a class="mdl-menu__item" href="/users/loginPage" id="login-item" style="color: black">登录</a>
+    <a class="mdl-menu__item" href="/users/logout" id="logout" style="color: black">登出</a>
+    <!--<li class="mdl-menu__item" id="ToTop">返回顶部</li>-->
+</ul>
+
+<a id="more-fab" class="mdl-button mdl-js-button  mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">未登陆</a>
+</body>
+<script src="/js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="/js/material.js"></script>
+<script src="/js/jqPaginator.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var result="";
+        var subjectId=<%=movieId%>;
+        function myfunction(item,index){
+            if(index===0){
+                result+=item;
+            }
+            else{
+                result+="/"+item;
+            }
+        }
+        function myfunction2(item,index){
+            var arr="";
+            if(index===0){
+                arr=item.split(" ");
+                result+=arr[0];
+            }
+            else{
+                arr=item.split(" ");
+                result+="/"+arr[0];
+            }
+        }
+        $.ajax({
+            dataType: 'jsonp',
+            type: 'GET',
+            url:'https://api.douban.com//v2/movie/'+subjectId,
+            success:function(subject){
+                console.log(subject);
+                $("#movieName").html(subject.title+"&nbsp;");
+                $("#movieAltName").html(subject.alt_title);
+                $("#movieRealseTime").html(subject.attrs.year[0]);
+                $("#movieImage").attr("src",subject.image);
+
+                var directors=subject.attrs.director;
+                directors.forEach(myfunction2);
+                $("#movieDirector").html(result);
+                result="";
+                var writers=subject.attrs.writer;
+                writers.forEach(myfunction2);
+                $("#movieWriter").html(result);
+                result="";
+                var casts=subject.attrs.cast;
+                casts.forEach(myfunction2);
+                $("#movieCast").html(result);
+                result="";
+                var movieTypes=subject.attrs.movie_type;
+                movieTypes.forEach(myfunction);
+                $("#movieType").html(result);
+                result="";
+                var movieCountries=subject.attrs.country;
+                movieCountries.forEach(myfunction);
+                $("#movieCountry").html(result);
+                result="";
+                var movieLanguages=subject.attrs.language;
+                movieLanguages.forEach(myfunction);
+                $("#movieLanguage").html(result);
+                result="";
+                var moviePUbDate=subject.attrs.pubdate;
+                moviePUbDate.forEach(myfunction);
+                $("#moviePubDate").html(result);
+                result="";
+                var movieTime=subject.attrs.movie_duration;
+                movieTime.forEach(myfunction);
+                $("#movieTime").html(result);
+                result="";
+                $("#movieSummary").html("&nbsp; &nbsp;  &nbsp; "+subject.summary);
+
+            }
+        })
+    })
+</script>
+<script type="text/javascript" src="/js/jquerysession.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        if($.session.get('user')===undefined||$.session.get('role')==='visitor'){
+            $('#submitArticle').remove();
+            $("#more-fab").text("未登陆");
+        }
+        if($.session.get('user')!=undefined){
+            $("#more-fab").text('你好 '+$.session.get('user'));
+            $("#login-item").remove();
+        }
+        $("#ToTop").click(function () {
+            // $('html, body').animate({scrollTop: 0}, 500);
+            scrollTo(0,0)
+            // alert("click")
+        })
+        $("#logout").click(function () {
+            $.session.clear();
+        })
+    })
+</script>
+</html>
