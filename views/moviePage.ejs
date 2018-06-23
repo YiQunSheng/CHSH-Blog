@@ -52,7 +52,7 @@
             padding: 10px;
         }
         .movieImage{
-            width: 100%;
+            width: auto;
             height: 410px;
             padding: 0;
         }
@@ -98,7 +98,32 @@
     <main class="mdl-layout__content">
         <!--正文部分-->
         <div class="mdl-grid" id="movie-grid">
-
+            <div class="mdl-grid mdl-grid--no-spacing mdl-cell--3-col mdl-cell--2-tablet movieContent">
+                <div class="movieShadowClass">
+                <section class="demo-card-image mdl-card mdl-shadow--2dp  mdl-shadow--2dp"><a
+                            href="http://127.0.0.1:3000/movieDetail/1292052"><img
+                                class="mdl-card__title mdl-card--expand movieImage"
+                                src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p480747492.jpg"></a>
+                    <div class="mdl-card__actions"><span class="demo-card-image__filename">肖申克的救赎| 豆瓣评分9.6</span></div>
+                </section>
+                </div>
+            </div>
+            <div class="mdl-grid mdl-grid--no-spacing mdl-cell--3-col mdl-cell--2-tablet movieContent">
+                <section class="demo-card-image mdl-card mdl-shadow--2dp  mdl-shadow--2dp"><a
+                            href="http://127.0.0.1:3000/movieDetail/1292052"><img
+                                class="mdl-card__title mdl-card--expand movieImage"
+                                src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p480747492.jpg"></a>
+                    <div class="mdl-card__actions"><span class="demo-card-image__filename">肖申克的救赎| 豆瓣评分9.6</span></div>
+                </section>
+            </div>
+            <div class="mdl-grid mdl-grid--no-spacing mdl-cell--3-col mdl-cell--2-tablet movieContent">
+                <section class="demo-card-image mdl-card mdl-shadow--2dp  mdl-shadow--2dp"><a
+                            href="http://127.0.0.1:3000/movieDetail/1292052"><img
+                                class="mdl-card__title mdl-card--expand movieImage"
+                                src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p480747492.jpg"></a>
+                    <div class="mdl-card__actions"><span class="demo-card-image__filename">肖申克的救赎| 豆瓣评分9.6</span></div>
+                </section>
+            </div>
         </div>
         <p id="text"> </p>
         <ul class="pagination" id ="jqPaginator">
@@ -143,9 +168,9 @@
             page: '<li class="page"><a class="waves-effect waves-teal btn-flat" href="javascript:void(0);">{{page}}</a></li>',
             onPageChange: function (num, type) {
                 $('#text').html('当前第' + num + '页');
-                num=12*num-12;
+                num=16*num-16;
 
-                var url="https://api.douban.com//v2/movie/top250?start="+num+"&count=12";
+                var url="https://api.douban.com//v2/movie/top250?start="+num+"&count=16";
                 $.ajax({
                     url: url,
                     type: 'GET',
@@ -154,13 +179,13 @@
                         console.log(data);
                         $("#movie-grid").empty();
                         data.subjects.forEach(function (item) {
-                            $("#movie-grid").append('<div class="mdl-grid mdl-grid--no-spacing mdl-cell--3-col mdl-cell--2-tablet movieContent"><div class="movieShadowClass"><section class="demo-card-image mdl-card mdl-shadow--2dp  mdl-shadow--2dp">'
+                            $("#movie-grid").append('<div class="mdl-grid mdl-grid--no-spacing mdl-cell--3-col mdl-cell--2-tablet movieContent"><section class="demo-card-image mdl-card mdl-shadow--2dp  mdl-shadow--2dp">'
                                 +'<a href="http://127.0.0.1:3000/movieDetail/'+item.id+ '">'+'<img class="mdl-card__title mdl-card--expand movieImage" src='+item.images.small+'>'+'</a>'+
-                                    '<div class="mdl-card__actions">'+
-                                    '<span class="demo-card-image__filename">'+ item.title+'| 豆瓣评分'+item.rating.average+'</span></div>'+
-                                    ' </div>'+
-                                    '</section>'+
-                                    '</div>'
+                                '<div class="mdl-card__actions">'+
+                                '<span class="demo-card-image__filename">'+ item.title+'| 豆瓣评分'+item.rating.average+'</span>'+
+                                ' </div>'+
+                                '</section>'+
+                                '</div>'
                             )
                         })
                     }

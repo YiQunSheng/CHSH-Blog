@@ -33,7 +33,9 @@ router.get('/', function(req, res, next) {
 router.get('/page',function(req,res){
     res.render('pageTest.ejs', null);
 });
-
+router.get('/movies',function(req,res){
+    res.render('moviePage.ejs', null);
+});
 router.get('/movieDetail/:movieId',function (req,res) {
      var movieId=req.params.movieId;
       res.render('movieDetail.ejs',{movieId:movieId});
