@@ -10,6 +10,7 @@ var ArticleSQL = {
     queryTags:'select tags,count(*) as count from article group by tags',
     queryArticleByTag:'SELECT * FROM article where tags =?',
     queryTagByArticleId:'SELECT tags FROM article where articleId=?',
-    queryArticleTitleByArticleId:'SELECT articleTitle From article where articleId=?'
+    queryArticleTitleByArticleId:'SELECT articleTitle From article where articleId=?',
+    likeArticle:'Insert into likeArticle(userId,articleId) values(?,?)',
 };
 module.exports = ArticleSQL;
