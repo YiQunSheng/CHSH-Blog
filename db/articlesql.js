@@ -12,5 +12,6 @@ var ArticleSQL = {
     queryTagByArticleId:'SELECT tags FROM article where articleId=?',
     queryArticleTitleByArticleId:'SELECT articleTitle From article where articleId=?',
     likeArticle:'Insert into likeArticle(userId,articleId) values(?,?)',
+    queryLikesByArticleId:'select count(*) from likeArticle where articleId =?'
 };
 module.exports = ArticleSQL;

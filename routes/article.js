@@ -52,6 +52,7 @@ router.get("/getAll",function (req,res) {
 });
 router.get('/articleDetail/:articleId',function (req,res) {
     var articleId=req.params.articleId;
+    
     client.query(articleSQL.queryByArticleId,[articleId],function(err,result){
         if(err){
             console.log('[QUERY ERROR] - ',err.message);
@@ -200,6 +201,33 @@ router.get('/articleResult',function(req,res){
         else{
             console.log(result);
              res.json(result);
+        }
+    })
+});
+//like article 
+router.post('/likeArticle',function(req,res){
+    var para =req.body;
+    console.log(para.userId);
+    console.log(para.articleId);
+    client.query(articleSQL.likeArticle,[para.userId,para.articleId],function(err,results){
+        if(err){
+            res.send("already")
+        }
+        else {
+            console.log(results)
+            res.send("likeSuccess")
+            // if(results.length===1)
+            // {
+            //     if(results[0].password===para.pwd){
+            //         console.log(results[0]);
+            //         res.json(results[0]);
+            //     }
+            //     else
+            //         res.send("Wrong Password");
+            // }
+            // else {
+            //     res.send("user not found")
+            // }
         }
     })
 });

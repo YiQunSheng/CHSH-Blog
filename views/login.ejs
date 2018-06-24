@@ -108,6 +108,7 @@
                     }
                     else{
                         $.session.set('user',msg.userName);
+                        $.session.set('userId',msg.userId);
                         $.session.set('role',msg.role);
                         window.location.href = "/";
                     }
