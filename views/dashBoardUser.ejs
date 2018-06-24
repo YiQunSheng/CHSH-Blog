@@ -50,8 +50,8 @@
             </div>
         </header>
         <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-            <a class="mdl-navigation__link is-active" href="/dashboardArticle"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>文章管理</a>
-            <a class="mdl-navigation__link" href="/dashboardUser"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>用户管理</a>
+            <a class="mdl-navigation__link " href="/dashboardArticle"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>文章管理</a>
+            <a class="mdl-navigation__link is-active" href="/dashboardUser"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>用户管理</a>
             <a class="mdl-navigation__link" href="/"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">reply</i>回到主页</a>
             <div class="mdl-layout-spacer"></div>
             <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
@@ -61,37 +61,38 @@
         <div class="mdl-grid demo-content">
             <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
                 <ul class="demo-list-three mdl-list">
-                    <%for(var i=0;i<articles.length;i++){%>
-                    <li class="mdl-list__item mdl-list__item--three-line <%=articles[i].articleId%>">
+                    <%for(var i=0;i<users.length;i++){%>
+                    <li class="mdl-list__item mdl-list__item--three-line <%=users[i].userId%>">
     <span class="mdl-list__item-primary-content">
-      <i class="material-icons mdl-list__item-avatar">book</i>
-      <span><%=articles[i].articleTitle%></span>
+      <i class="material-icons mdl-list__item-avatar">face</i>
+      <span><%=users[i].userId%></span>
       <span class="mdl-list__item-text-body">
 
-        作者：<%=articles[i].articleAuthor%> | Wrote on <%=articles[i].articleWriteDate%>
+        用户名：<%=users[i].userName%> | 密码: <%=users[i].password%>
       </span>
     </span>
                         <span class="mdl-list__item-secondary-content">
-      <a class="mdl-list__item-secondary-action delete-btn" href="#" id="<%=articles[i].articleId%>"><i class="material-icons">delete</i></a>
+      <a class="mdl-list__item-secondary-action delete-btn" href="#" id="<%=users[i].userId%>"><i class="material-icons">delete</i></a>
     </span>
                     </li>
-                    <hr class="<%=articles[i].articleId%>">
+
+                    <hr class="<%=users[i].userId%>">
                     <%}%>
 
-                    <li class="mdl-list__item mdl-list__item--three-line">
-    <span class="mdl-list__item-primary-content">
-      <i class="material-icons mdl-list__item-avatar">book</i>
-      <span>article1</span>
-      <span class="mdl-list__item-text-body">
+                    <!--<li class="mdl-list__item mdl-list__item&#45;&#45;three-line">-->
+    <!--<span class="mdl-list__item-primary-content">-->
+      <!--<i class="material-icons mdl-list__item-avatar">book</i>-->
+      <!--<span>article1</span>-->
+      <!--<span class="mdl-list__item-text-body">-->
 
-        作者：盛轶群 | 写于：2018-12-31
-      </span>
-    </span>
-                        <span class="mdl-list__item-secondary-content">
-      <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">delete</i></a>
-    </span>
-                    </li>
-                    <hr>
+        <!--作者：盛轶群 | 写于：2018-12-31-->
+      <!--</span>-->
+    <!--</span>-->
+                        <!--<span class="mdl-list__item-secondary-content">-->
+      <!--<a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">delete</i></a>-->
+    <!--</span>-->
+                    <!--</li>-->
+                    <!--<hr>-->
                     <!--<li class="mdl-list__item mdl-list__item&#45;&#45;three-line">-->
     <!--<span class="mdl-list__item-primary-content">-->
       <!--<i class="material-icons  mdl-list__item-avatar">person</i>-->
@@ -140,13 +141,13 @@
         var deleteId = $(this).attr('id');
         console.log("your delete id is "+deleteId);
         var data = {
-            message: '你确定要删除该文章吗'+deleteId,
+            message: '你确定要删除该用户吗'+deleteId,
             actionHandler: function(event) {
                 console.log("you click delete"+deleteId)
                 $.ajax({
-                    data:{articleId:deleteId},
+                    data:{userId:deleteId},
                     type:"POST",
-                    url:"/article/deleteArticle",
+                    url:"/users/deleteUser",
                     success:function (msg) {
                         if(msg==="deleteSuccess"){
                             console.log("OK delete!");

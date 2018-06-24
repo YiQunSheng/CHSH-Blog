@@ -213,7 +213,7 @@ router.post('/likeArticle',function(req,res){
             res.send("already")
         }
         else {
-            console.log(results)
+            console.log(results);
             res.send("likeSuccess")
         }
     })
