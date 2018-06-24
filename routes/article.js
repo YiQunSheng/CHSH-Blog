@@ -232,4 +232,18 @@ router.post('/queryLikeNumbers',function(req,res){
         }
     })
 });
+router.post('/deleteArticle',function(req,res){
+    var para =req.body;
+    console.log(para.articleId);
+    client.query(articleSQL.deleteArticleById,[para.articleId],function(err,results){
+        if(err){
+            res.send("deleteError")
+        }
+        else {
+            console.log("delete already");
+            res.send("deleteSuccess");
+        }
+    })
+});
+
 module.exports = router;

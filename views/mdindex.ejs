@@ -207,6 +207,7 @@
 <ul class="mdl-menu  mdl-menu--top-right mdl-js-menu mdl-js-ripple-effect" for="more-fab" style="margin-bottom: 10px;">
     <!--<li class="mdl-menu__item">个人信息</li>-->
     <a class="mdl-menu__item" href="/users/loginPage" id="login-item" style="color: black">登录</a>
+    <a class="mdl-menu__item" href="/dashboardArticle" id="dashboard" style="color: black">后台管理</a>
     <a class="mdl-menu__item" href="/users/logout" id="logout" style="color: black">登出</a>
     <!--<li class="mdl-menu__item" id="ToTop">返回顶部</li>-->
 </ul>
@@ -222,8 +223,10 @@
     $(document).ready(function () {
         if($.session.get('user')===undefined||$.session.get('role')==='visitor'){
             $('#submitArticle').remove();
+            $('#dashboard').remove();
             $("#more-fab").text("未登陆");
         }
+
         if($.session.get('user')!=undefined){
             $("#more-fab").text('你好 '+$.session.get('user'));
             $("#login-item").remove();
