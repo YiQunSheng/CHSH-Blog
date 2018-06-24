@@ -9,7 +9,7 @@ var client=mysql.createConnection(dbConfig.mysql);
 /* GET home page. */
 router.get('/', function(req, res, next) {
     var fourArticles;
-    client.query(articleSQL.queryFour,function (err,results) {
+    client.query(articleSQL.recommendArticle,function (err,results) {
         if(err)
             throw err;
         else{
@@ -29,37 +29,39 @@ router.get('/', function(req, res, next) {
     })
 
 });
-// router.get('/reg', function(req, res, next) {
-//   res.render('reg', { title: 'Register' });
-// });
-router.get('/newindex', function (req, res) {
-  res.render('index.ejs')
-});
-router.get('/login', function (req, res) {
-    res.render('login.ejs');
-});
-router.get('/movies', function (req, res) {
-    res.render('movies.ejs');
-});
-router.get('/reg', function(req, res, next) {
-    res.render('register.ejs', { title: 'Express' });
-});
-//render 才能返回一个ejs文件，如果是send则返回文字。 第一个参数是文件名，第二个是ejs渲染的参数。
-router.get('/testhtml',function(req,res){
-res.render('testhtml', { title: 'Express' });
-});
+
 router.get('/page',function(req,res){
     res.render('pageTest.ejs', null);
+});
+router.get('/movies',function(req,res){
+    res.render('moviePage.ejs', null);
 });
 router.get('/movieDetail/:movieId',function (req,res) {
      var movieId=req.params.movieId;
       res.render('movieDetail.ejs',{movieId:movieId});
 });
+
 router.get('/aboutUS',function(req,res){
     res.render('aboutUs.ejs', null);
 });
 router.get('/mdl',function (req,res) {
     res.redirect('http://www.getmdl.io')
 });
+router.get('/dashboard',function (req,res) {
+    res.render('dashBoard.ejs', null);
+});
+
+router.get('/dashboardArticle', function (req, res) {
+    client.query(articleSQL.queryAll,function(err,result){
+        if(err){
+            console.log('[SELECT ERROR] - ',err.message);
+            return;
+        }
+        console.log(result);
+        res.render('dashBoard.ejs', {articles:result});
+
+    });
+});
+
 //导出这个路由并在app.js中通过app.use('/', routes)加载
 module.exports = router;

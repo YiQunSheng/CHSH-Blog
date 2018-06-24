@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Material Design Lite</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-pink.min.css">
+    <link rel="stylesheet" href="/stylesheets/dashBoardstyles.css">
+    <style>
+        .is-active {
+            background-color: #00BCD4;
+            color: #37474F;
+        }
+    </style>
+</head>
+<body>
+<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+    <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
+        <div class="mdl-layout__header-row">
+            <span class="mdl-layout-title">Home</span>
+            <div class="mdl-layout-spacer"></div>
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+                <i class="material-icons">more_vert</i>
+            </button>
+            <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
+                <li class="mdl-menu__item" id="backtoHome">回到主页</li>
+                <li class="mdl-menu__item" id="logout">登出</li>
+            </ul>
+        </div>
+    </header>
+    <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+        <header class="demo-drawer-header">
+            <!--<img src="images/user.jpg" class="demo-avatar">-->
+            <i class="material-icons">people</i>
+            <div class="demo-avatar-dropdown">
+                <span>hello@example.com</span>
+                <div class="mdl-layout-spacer"></div>
+                <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                    <i class="material-icons" role="presentation">arrow_drop_down</i>
+                    <span class="visuallyhidden">Accounts</span>
+                </button>
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
+                    <li class="mdl-menu__item">hello@example.com</li>
+                    <li class="mdl-menu__item">info@example.com</li>
+                    <li class="mdl-menu__item"><i class="material-icons">add</i>Add another account...</li>
+                </ul>
+            </div>
+        </header>
+        <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
+            <a class="mdl-navigation__link is-active" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>文章管理</a>
+            <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>用户管理</a>
+            <a class="mdl-navigation__link" href="/"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">reply</i>回到主页</a>
+            <div class="mdl-layout-spacer"></div>
+            <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
+        </nav>
+    </div>
+    <main class="mdl-layout__content mdl-color--grey-100">
+        <div class="mdl-grid demo-content">
+            <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+                <ul class="demo-list-three mdl-list">
+                    <%for(var i=0;i<articles.length;i++){%>
+                    <li class="mdl-list__item mdl-list__item--three-line <%=articles[i].articleId%>">
+    <span class="mdl-list__item-primary-content">
+      <i class="material-icons mdl-list__item-avatar">book</i>
+      <span><%=articles[i].articleTitle%></span>
+      <span class="mdl-list__item-text-body">
+
+        作者：<%=articles[i].articleAuthor%> | Wrote on <%=articles[i].articleWriteDate%>
+      </span>
+    </span>
+                        <span class="mdl-list__item-secondary-content">
+      <a class="mdl-list__item-secondary-action delete-btn" href="#" id="<%=articles[i].articleId%>"><i class="material-icons">delete</i></a>
+    </span>
+                    </li>
+                    <hr class="<%=articles[i].articleId%>">
+                    <%}%>
+
+                    <li class="mdl-list__item mdl-list__item--three-line">
+    <span class="mdl-list__item-primary-content">
+      <i class="material-icons mdl-list__item-avatar">book</i>
+      <span>article1</span>
+      <span class="mdl-list__item-text-body">
+
+        作者：盛轶群 | 写于：2018-12-31
+      </span>
+    </span>
+                        <span class="mdl-list__item-secondary-content">
+      <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">delete</i></a>
+    </span>
+                    </li>
+                    <hr>
+                    <li class="mdl-list__item mdl-list__item--three-line">
+    <span class="mdl-list__item-primary-content">
+      <i class="material-icons  mdl-list__item-avatar">person</i>
+      <span>Aaron Paul</span>
+      <span class="mdl-list__item-text-body">
+        Aaron Paul played the role of Jesse in Breaking Bad. He also featured in
+        the "Need For Speed" Movie.
+      </span>
+    </span>
+                        <span class="mdl-list__item-secondary-content">
+      <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+    </span>
+                    </li>
+                    <hr>
+                    <li class="mdl-list__item mdl-list__item--three-line">
+    <span class="mdl-list__item-primary-content">
+      <i class="material-icons  mdl-list__item-avatar">person</i>
+      <span>Bob Odenkirk</span>
+      <span class="mdl-list__item-text-body">
+        Bob Odinkrik played the role of Saul in Breaking Bad. Due to public fondness for the
+        character, Bob stars in his own show now, called "Better Call Saul".
+      </span>
+    </span>
+                        <span class="mdl-list__item-secondary-content">
+      <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+    </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    <div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-snackbar mdl-js-snackbar">
+        <div class="mdl-snackbar__text"></div>
+        <button type="button" class="mdl-snackbar__action"></button>
+    </div>
+
+</div>
+
+<script src="/js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="/js/material.js"></script>
+<script type="text/javascript" src="/js/jquery.toTop.js"></script>
+<script type="text/javascript" src="/js/jquerysession.js"></script>
+<script>
+    $(".delete-btn").click(function () {
+        var notification = document.querySelector('.mdl-js-snackbar');
+        var deleteId = $(this).attr('id');
+        console.log("your delete id is "+deleteId);
+        var data = {
+            message: '你确定要删除该文章吗'+deleteId,
+            actionHandler: function(event) {
+                console.log("you click delete"+deleteId)
+                $.ajax({
+                    data:{articleId:deleteId},
+                    type:"POST",
+                    url:"/article/deleteArticle",
+                    success:function (msg) {
+                        if(msg==="deleteSuccess"){
+                            console.log("OK delete!");
+                            $("."+deleteId).hide(function () {
+                                $("."+deleteId).remove();
+                            });
+
+                        }
+                    },
+                    error:function () {
+
+                    }
+                })
+            },
+            actionText: 'YES',
+            timeout: 5000
+        };
+        notification.MaterialSnackbar.showSnackbar(data);
+    })
+    $("#logout").click(function () {
+        $.session.clear();
+        window.location.href='/';
+    })
+    $("#backtoHome").click(function () {
+        window.location.href='/';
+    })
+</script>
+</body>
+</html>

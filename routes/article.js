@@ -81,10 +81,6 @@ router.get('/articleDetail/:articleId',function (req,res) {
                     },500);
                 }
             ],function (err, results,newResults) {
-
-                // console.log("评论长度为"+newResults[0].length);
-                //   res.render("index.html", {list: results, list2: newResults});
-                // console.log(newResults.length);
                 res.render('articledetail.ejs',{articleDetail:result[0],articleComment:results,articleReply:newResults});
             })
         })
@@ -111,8 +107,6 @@ router.post('/submitArticle', function (req, res) {
             res.redirect('/');
         }
     })
-    // res.send("hello");
-    //
 });
 //返回所有文章的json
 router.post('/getPage', function (req, res) {
@@ -209,4 +203,47 @@ router.get('/articleResult',function(req,res){
         }
     })
 });
+//like article 
+router.post('/likeArticle',function(req,res){
+    var para =req.body;
+    console.log(para.userId);
+    console.log(para.articleId);
+    client.query(articleSQL.likeArticle,[para.userId,para.articleId],function(err,results){
+        if(err){
+            res.send("already")
+        }
+        else {
+            console.log(results)
+            res.send("likeSuccess")
+        }
+    })
+});
+router.post('/queryLikeNumbers',function(req,res){
+    var para =req.body;
+    console.log(para.articleId);
+    client.query(articleSQL.queryLikesByArticleId,[para.articleId],function(err,results){
+        if(err){
+            res.send("cannotFindLike")
+        }
+        else {
+            var LikeNumber=results[0].LikeNumbers;
+            console.log("the like number is "+LikeNumber);
+            res.send({LikeNumber:LikeNumber});
+        }
+    })
+});
+router.post('/deleteArticle',function(req,res){
+    var para =req.body;
+    console.log(para.articleId);
+    client.query(articleSQL.deleteArticleById,[para.articleId],function(err,results){
+        if(err){
+            res.send("deleteError")
+        }
+        else {
+            console.log("delete already");
+            res.send("deleteSuccess");
+        }
+    })
+});
+
 module.exports = router;
