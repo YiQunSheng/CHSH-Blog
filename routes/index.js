@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var dbConfig=require('../db/DBConfig');
 var articleSQL = require('../db/articlesql');
+var userSQL=require('../db/usersql');
 var mysql=require('mysql');
 var session = require('express-session');
 var client=mysql.createConnection(dbConfig.mysql);
@@ -61,6 +62,15 @@ router.get('/dashboardArticle', function (req, res) {
         res.render('dashBoard.ejs', {articles:result});
 
     });
+});
+router.get('/dashboardUser',function(req,res){
+ client.query(userSQL.queryAll,function (err,result) {
+     if(err){
+         console.log('[SELECT ERROR] - ',err.message);
+         return;
+     }
+     res.render('dashBoardUser.ejs', {users:result});
+ })
 });
 
 //导出这个路由并在app.js中通过app.use('/', routes)加载

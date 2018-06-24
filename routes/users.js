@@ -37,7 +37,9 @@ router.post('/login',function(req,res){
                     console.log(results[0]);
                     res.json(results[0]);
                 }
-                else
+                else if(results[0].isDelete===1){
+                    res.send("user not found")
+                }else
                     res.send("Wrong Password");
             }
             else {
@@ -93,6 +95,19 @@ router.get('/logout',function (req,res) {
                     res.render('mdindex.ejs',{fourArticles:fourArticles,tags:tagsInfo});
                 }
             })
+        }
+    })
+});
+router.post('/deleteUser',function(req,res){
+    var para =req.body;
+    console.log(para.userId);
+    client.query(user.deleteUserById,[para.userId],function(err,results){
+        if(err){
+            res.send("deleteError")
+        }
+        else {
+            console.log("delete already");
+            res.send("deleteSuccess");
         }
     })
 });
