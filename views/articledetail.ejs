@@ -330,6 +330,24 @@
         $("#logout").click(function () {
             $.session.clear();
         })
+        //渲染点赞数
+        $.ajax({
+                data:{articleId:<%= articleDetail.articleId %>},
+                type:"POST",
+                url:"/article/queryLikeNumbers",
+                success:function (msg) {
+                    if(msg==='cannotFindLike'){
+                        $("#likeNumber").text("Error"); 
+                    }
+                    else{
+                    $("#likeNumber").text(msg.LikeNumber);
+                    }
+                    
+                },
+                error:function () {
+                    $("#likeNumber").text("Server Error");
+                }
+            })
     })
 </script>
 <script>
@@ -358,7 +376,11 @@
                     {
                         message: '成功喜欢该文章啦！'
                     });
-                    $("#likeNumber").text("666");
+                    var likeNumbers=$("#likeNumber").text();
+                    var number = parseInt(likeNumbers);
+                    console.log(number);
+                    number++;
+                    $("#likeNumber").text(number);
                     }
                     else if(msg==="already"){
                         var notification = document.querySelector('.mdl-js-snackbar');
@@ -366,7 +388,7 @@
                     {
                         message: '您已经赞过啦！'
                     });
-                    $("#likeNumber").text("500"); 
+                    // $("#likeNumber").text("500"); 
                     }
                     
                 },
@@ -376,7 +398,7 @@
                     {
                         message: 'Like Error!服务器出问题啦！'
                     });
-                    $("#likeNumber").text("404");
+                    $("#likeNumber").text("404咯");
                 }
             })
         })

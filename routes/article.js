@@ -52,7 +52,6 @@ router.get("/getAll",function (req,res) {
 });
 router.get('/articleDetail/:articleId',function (req,res) {
     var articleId=req.params.articleId;
-    
     client.query(articleSQL.queryByArticleId,[articleId],function(err,result){
         if(err){
             console.log('[QUERY ERROR] - ',err.message);
@@ -216,18 +215,20 @@ router.post('/likeArticle',function(req,res){
         else {
             console.log(results)
             res.send("likeSuccess")
-            // if(results.length===1)
-            // {
-            //     if(results[0].password===para.pwd){
-            //         console.log(results[0]);
-            //         res.json(results[0]);
-            //     }
-            //     else
-            //         res.send("Wrong Password");
-            // }
-            // else {
-            //     res.send("user not found")
-            // }
+        }
+    })
+});
+router.post('/queryLikeNumbers',function(req,res){
+    var para =req.body;
+    console.log(para.articleId);
+    client.query(articleSQL.queryLikesByArticleId,[para.articleId],function(err,results){
+        if(err){
+            res.send("cannotFindLike")
+        }
+        else {
+            var LikeNumber=results[0].LikeNumbers;
+            console.log("the like number is "+LikeNumber);
+            res.send({LikeNumber:LikeNumber});
         }
     })
 });
