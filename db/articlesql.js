@@ -1,5 +1,5 @@
 var ArticleSQL = {
-    insert:'INSERT INTO article(articleTitle,articleAuthor,articleContent,articleWriteDate,tags,articleIsArDelete) VALUES(?,?,?,?,?,0)',
+    insert:'INSERT INTO article(articleTitle,articleAuthor,articleContent,articleWriteDate,tags,articleIsDelete) VALUES(?,?,?,?,?,0)',
     changeInfo:'UPDATE user SET userName = ?,password = ? WHERE userId=?',
     queryAll:'SELECT * FROM article where articleIsDelete=0  order by articleId desc',
     queryFour:"SELECT * from article order by articleWriteDate desc limit 0,4",

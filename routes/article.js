@@ -95,7 +95,7 @@ router.post('/submitArticle', function (req, res) {
     var content = para.content;
     var date = para.writeDate;
     var tags = para.tags;
-    client.query(articleSQL.insert, [title, author, content, date, tags], function (err, results) {
+    client.query(articleSQL.insert, [title, author, content, date, tags,0], function (err, results) {
         if (err) {
             // res.send("submit article failed");
             console.log("存储数据库失败");
@@ -210,7 +210,7 @@ router.post('/likeArticle',function(req,res){
     console.log(para.articleId);
     client.query(articleSQL.likeArticle,[para.userId,para.articleId],function(err,results){
         if(err){
-            res.send("already")
+            res.send("already");
         }
         else {
             console.log(results);
