@@ -118,7 +118,6 @@ h3{
 .mdl-chip{
     transition: all 0.3s cubic-bezier(.10,.4,.10,0.2);
 }
-
-.mdl-layout__tab{
-
+.mdl-menu__container{
+    right: 130px;
 }

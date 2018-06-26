@@ -51,7 +51,6 @@ router.get('/mdl',function (req,res) {
 router.get('/dashboard',function (req,res) {
     res.render('dashBoard.ejs', null);
 });
-
 router.get('/dashboardArticle', function (req, res) {
     client.query(articleSQL.queryAll,function(err,result){
         if(err){
@@ -59,7 +58,7 @@ router.get('/dashboardArticle', function (req, res) {
             return;
         }
         console.log(result);
-        res.render('dashBoard.ejs', {articles:result});
+        res.render('dashBoardArticle.ejs', {articles:result});
 
     });
 });

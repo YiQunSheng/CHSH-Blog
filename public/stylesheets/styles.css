@@ -4,12 +4,15 @@ html, body {
   margin: 0;
   padding: 0;
 }
+/*分开的两个class代表后一个是前一个的子元素*/
 .chsh .mdl-layout__header-row {
   padding-left: 40px;
 }
+/*连起来的，说明有两个class*/
 .chsh .mdl-layout.is-small-screen .mdl-layout__header-row h3 {
   font-size: inherit;
 }
+/*除去自带的两侧的button*/
 .chsh .mdl-layout__tab-bar-button {
   display: none;
 }
@@ -26,7 +29,6 @@ html, body {
 .chsh .mdl-layout__tab-bar {
   padding: 0;
   padding-left: 16px;
-  box-sizing: border-box;
   height: 100%;
   width: 100%;
 }
@@ -38,23 +40,19 @@ html, body {
   background-color: white;
   height: 4px;
 }
-.chsh main > .mdl-layout__tab-panel {
-  padding: 8px;
-  padding-top: 48px;
-}
-.chsh .mdl-card {
-  height: auto;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  flex-direction: column;
-}
+
+/*.chsh .mdl-card {*/
+  /*height: auto;*/
+  /*display: -webkit-flex;*/
+  /*display: -ms-flexbox;*/
+  /*display: flex;*/
+  /*flex-direction: column;*/
+/*}*/
 .chsh .mdl-card > * {
   height: auto;
 }
 .chsh .mdl-card .mdl-card__supporting-text {
   margin: 40px;
-  flex-grow: 1;
   padding: 0;
   color: inherit;
   width: calc(100% - 80px);
@@ -77,26 +75,25 @@ html, body {
   color: inherit;
   background-color: transparent;
 }
+/*紧挨着text的action元素设置边框*/
 .chsh .mdl-card__supporting-text + .mdl-card__actions {
   border-top: 1px solid rgba(0, 0, 0, 0.12);
 }
-.chsh #add {
-  position: absolute;
-  right: 40px;
-  top: 36px;
-  z-index: 999;
+.text--recommend{
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
 }
-
-.chsh .mdl-layout__content section:not(:last-of-type) {
+.text--recommend >a:hover{
+    color: #00BCD4;;
+    background-color: transparent;
+}
+.chsh .mdl-layout__content section {
   position: relative;
   margin-bottom: 48px;
 }
 .chsh section.section--center {
   max-width: 860px;
 }
-.chsh #features section.section--center {
-  max-width: 620px;
-}
+
 .chsh section > header{
   display: flex;
   align-items: center;
@@ -114,35 +111,25 @@ html, body {
   top: 8px;
   right: 8px;
 }
-.chsh section .section__circle {
-  display: flex;
-  flex-shrink: 1;
-}
+
 .chsh section .section__text {
-  flex-grow: 1;
-  flex-shrink: 0;
-  padding-top: 8px;
+  padding-top: 16px;
 }
 .chsh section .section__text h5 {
   font-size: inherit;
   margin: 0;
   margin-bottom: 0.5em;
 }
-.chsh section .section__text a {
-  text-decoration: none;
-}
-.chsh section .section__circle-container > .section__circle-container__circle {
-  width: 64px;
-  height: 64px;
-  border-radius: 32px;
-  margin: 8px 0;
-}
+
+
+/*大屏幕下*/
 .chsh section.section--footer .section__circle--big {
   width: 150px;
   height: 150px;
   border-radius: 75px;
   margin: 8px 32px;
 }
+/*小屏幕下*/
 .chsh .is-small-screen section.section--footer .section__circle--big {
   width: 50px;
   height: 50px;
@@ -150,44 +137,41 @@ html, body {
   margin: 8px 16px;
 }
 .chsh section.section--footer {
-  padding: 64px auto;
   margin: 0 -8px -8px -8px;
 }
-.chsh section.section--center .section__text:not(:last-child) {
-  border-bottom: 1px solid rgba(0,0,0,.13);
-}
-.chsh .mdl-card .mdl-card__supporting-text > h3:first-child {
-  margin-bottom: 24px;
-}
-.chsh .mdl-layout__tab-panel:not(#overview) {
-  background-color: white;
-}
-.chsh #features section {
-  margin-bottom: 72px;
-}
-.chsh #features h4, #features h5 {
-  margin-bottom: 16px;
-}
-.chsh .toc {
-  border-left: 4px solid #C1EEF4;
-  margin: 24px;
-  padding: 0;
-  padding-left: 8px;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-.chsh .toc h4 {
-  font-size: 0.9rem;
-  margin-top: 0;
-}
-.chsh .toc a {
-  color: #4DD0E1;
-  text-decoration: none;
-  font-size: 16px;
-  line-height: 28px;
-  display: block;
-}
-.chsh .mdl-menu__container {
-  z-index: 99;
-}
+/*.chsh .mdl-card .mdl-card__supporting-text > h3:first-child {*/
+  /*margin-bottom: 24px;*/
+/*}*/
+/*.chsh .mdl-layout__tab-panel:not(#overview) {*/
+  /*background-color: white;*/
+/*}*/
+/*.chsh #features section {*/
+  /*margin-bottom: 72px;*/
+/*}*/
+/*.chsh #features h4, #features h5 {*/
+  /*margin-bottom: 16px;*/
+/*}*/
+
+/*.chsh .toc {*/
+  /*border-left: 4px solid #C1EEF4;*/
+  /*margin: 24px;*/
+  /*padding: 0;*/
+  /*padding-left: 8px;*/
+  /*display: -webkit-flex;*/
+  /*display: -ms-flexbox;*/
+  /*display: flex;*/
+/*!*}*!*/
+/*.chsh .toc h4 {*/
+  /*font-size: 0.9rem;*/
+  /*margin-top: 0;*/
+/*}*/
+/*.chsh .toc a {*/
+  /*color: #4DD0E1;*/
+  /*text-decoration: none;*/
+  /*font-size: 16px;*/
+  /*line-height: 28px;*/
+  /*display: block;*/
+/*}*/
+/*.chsh .mdl-menu__container {*/
+  /*z-index: 99;*/
+/*}*/
